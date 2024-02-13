@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtnfcyjhhyq8c"]
+
+[ext_resource type="Script" path="res://Enemies/Soldier/soldier_jump.gd" id="1_2x1nd"]
+[ext_resource type="Texture2D" uid="uid://bmdmo1wfbdrc3" path="res://Enemies/Soldier/soldier.png" id="2_tc7xm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s184j"]
+size = Vector2(20, 37)
+
+[sub_resource type="Animation" id="Animation_nw42y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_bxi7q"]
+resource_name = "crouching_shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"handle_shoot_crouch"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_idtyt"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_prcnr"]
+resource_name = "standing_shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 1]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"handle_shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfm7k"]
+_data = {
+"RESET": SubResource("Animation_nw42y"),
+"crouching_shoot": SubResource("Animation_bxi7q"),
+"jump": SubResource("Animation_idtyt"),
+"standing_shoot": SubResource("Animation_prcnr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l3r5"]
+size = Vector2(85, 88)
+
+[node name="SoldierJump" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_2x1nd")
+
+[node name="SpriteHolder" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder"]
+texture = ExtResource("2_tc7xm")
+hframes = 19
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_s184j")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "jump"
+libraries = {
+"": SubResource("AnimationLibrary_jfm7k")
+}
+
+[node name="TriggerArea" type="Area2D" parent="."]
+position = Vector2(77, -39)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(-1.5, -65)
+shape = SubResource("RectangleShape2D_3l3r5")
+
+[connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]

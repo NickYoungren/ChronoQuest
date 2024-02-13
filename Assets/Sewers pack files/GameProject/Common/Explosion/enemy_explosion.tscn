@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://dw73yymea4fir"]
+
+[ext_resource type="Script" path="res://Common/Explosion/enemy_explosion.gd" id="1_2e88w"]
+[ext_resource type="Texture2D" uid="uid://e2vq15di6nl4" path="res://Common/Explosion/explosion-sheet.png" id="1_7bndj"]
+[ext_resource type="AudioStream" uid="uid://d1ha05cr6mba5" path="res://Sounds/explosion.wav" id="3_6yo2x"]
+
+[sub_resource type="Animation" id="Animation_ieh3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_17yq3"]
+resource_name = "explosion"
+length = 2.0
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.72),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hihmf"]
+_data = {
+"RESET": SubResource("Animation_ieh3l"),
+"explosion": SubResource("Animation_17yq3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jhmb"]
+size = Vector2(71, 31)
+
+[node name="EnemyExplosion" type="Area2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2e88w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("1_7bndj")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "explosion"
+libraries = {
+"": SubResource("AnimationLibrary_hihmf")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_0jhmb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6yo2x")
+autoplay = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

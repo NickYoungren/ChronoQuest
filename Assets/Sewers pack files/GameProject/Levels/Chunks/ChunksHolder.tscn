@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbx5b7dj8703y"]
+
+[ext_resource type="Script" path="res://Levels/Chunks/ChunksHolder.gd" id="1_covmr"]
+[ext_resource type="PackedScene" uid="uid://yqsrmnpe7cyv" path="res://Levels/Chunks/ChunkPieces/chunk_initial.tscn" id="2_3otx8"]
+[ext_resource type="PackedScene" uid="uid://duae7yk0nunl6" path="res://Player/player.tscn" id="4_tjsd6"]
+
+[node name="ChunksHolder" type="Node2D"]
+script = ExtResource("1_covmr")
+
+[node name="ChunkInitial" parent="." instance=ExtResource("2_3otx8")]
+position = Vector2(24, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_tjsd6")]
+z_index = 2
+position = Vector2(105, 164)

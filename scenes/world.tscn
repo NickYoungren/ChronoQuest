@@ -1,25 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh75dl0kcwri5"]
+[gd_scene load_steps=5 format=3 uid="uid://bh75dl0kcwri5"]
 
-[ext_resource type="PackedScene" uid="uid://cgcd1anas4gh0" path="res://scenes/player.tscn" id="1_704yu"]
+[ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="1_s32k6"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_vkjbi"]
-size = Vector2(1000, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg165"]
+size = Vector2(1153.5, 186)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqi0y"]
-size = Vector2(998, 97)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_570lb"]
+size = Vector2(68.75, 469)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrgbk"]
+size = Vector2(68.75, 469)
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_704yu")]
-position = Vector2(564, 339)
+[node name="Player" parent="." instance=ExtResource("1_s32k6")]
+position = Vector2(160, 111)
 
-[node name="platform" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="platform"]
-position = Vector2(576, 503)
-mesh = SubResource("QuadMesh_vkjbi")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(578.25, 552)
+shape = SubResource("RectangleShape2D_qg165")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(577, 503)
-shape = SubResource("RectangleShape2D_eqi0y")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(31.625, 225.5)
+shape = SubResource("RectangleShape2D_570lb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1118, 222)
+shape = SubResource("RectangleShape2D_lrgbk")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 19.0
+offset_top = 457.0
+offset_right = 1141.0
+offset_bottom = 654.0
