@@ -75,3 +75,7 @@ func _physics_process(delta):
 		anim.play("Fall")
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	self.queue_free() #deletes the player from existence
