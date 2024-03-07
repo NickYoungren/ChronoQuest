@@ -15,7 +15,13 @@ var rew = false
 @export var orb : PackedScene
 @export var bullet : PackedScene
 
+signal death()
+signal victory()
 
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
 func rewind():
 	if rew == false:
 		b = orb.instantiate()
@@ -45,6 +51,8 @@ func _physics_process(delta):
 		rewind()
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if Input.is_action_just_pressed('reset_level'):
+		reset_level()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -76,6 +84,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+#currently the respawn button is Q
+func handleRespawn():
+	global_position = Vector2(166,379)
+	
+func reset_level():
+	handleRespawn()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	self.queue_free() #deletes the player from existence
+func _on_trap_body_entered(body: Node2D) -> void:
+	death.emit()
+	handleRespawn()
+
+func _on_win_body_entered(body: Node2D) -> void:
+	victory.emit()
