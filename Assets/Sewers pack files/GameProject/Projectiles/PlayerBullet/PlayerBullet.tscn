@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3fa68onrn2cf"]
+
+[ext_resource type="Script" path="res://Projectiles/PlayerBullet/PlayerBullet.gd" id="1_tvu48"]
+[ext_resource type="Texture2D" uid="uid://d3dghenkiax4i" path="res://Projectiles/PlayerBullet/bullet.png" id="2_jfhv4"]
+[ext_resource type="AudioStream" uid="uid://rd1hx7i5h2r7" path="res://Sounds/shot.wav" id="3_7or0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o84cx"]
+size = Vector2(4, 4)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_tvu48")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jfhv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o84cx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.7, 0.7)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7or0i")
+autoplay = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

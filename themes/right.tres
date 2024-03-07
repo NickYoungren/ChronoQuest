@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c353f3fjccowq"]
+
+[ext_resource type="Texture2D" uid="uid://p3bnj8d0quuc" path="res://themes/tileset.png" id="1_wefeh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ouu8t"]
+texture = ExtResource("1_wefeh")
+region_rect = Rect2(208, 27, 45, 37)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_ouu8t")

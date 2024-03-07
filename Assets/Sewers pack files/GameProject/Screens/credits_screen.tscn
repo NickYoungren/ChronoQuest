@@ -1,0 +1,218 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmamkgmnj8y1l"]
+
+[ext_resource type="FontFile" uid="uid://dkwsdcagsncj6" path="res://Screens/NESCyrillic.ttf" id="1_1cvwj"]
+[ext_resource type="Script" path="res://Screens/credits_screen.gd" id="1_cq2e6"]
+[ext_resource type="FontFile" uid="uid://2w42oruy1bg2" path="res://Screens/BetterPixels.ttf" id="3_f1olw"]
+
+[node name="CreditsScreen" type="Node2D"]
+script = ExtResource("1_cq2e6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 363.0
+offset_bottom = 242.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextNode" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextNode"]
+offset_left = 17.0
+offset_top = 236.0
+offset_right = 346.0
+offset_bottom = 2435.0
+theme_override_fonts/normal_font = ExtResource("1_1cvwj")
+text = "
+
+
+
+
+Special thanks to my Supporters
+
+
+
+
+
+
+Tobias Edvardsen
+
+
+Omegus
+
+
+Arthur Bates
+
+
+Christopher Gilchrist
+
+
+NickQuest
+
+
+ThatOneGuy
+
+
+
+
+
+
+
+
+
+
+
+
+Alex
+
+
+Rxtje
+
+
+Nothings
+
+
+fan_of_shera 
+
+
+Jeremy Seay
+
+
+Jon Silvera
+
+
+Brandon Morris
+
+
+Philip Rushik
+
+
+Alex 
+
+
+Matthew D Moores
+
+
+David Ang
+
+
+TTT 
+
+
+Cesar Guirao
+
+
+Thomas 
+
+
+Zach Breman
+
+
+Molly the BullyJ
+
+
+ason McMillen
+
+
+Sean Barrett
+
+
+Darkbit
+
+
+Stephen Gaffney
+
+
+dani deslauriers
+
+
+Andrew Ettensohn
+
+
+Kevin Graventa
+
+
+Drew Anderson
+
+
+Bazil 
+
+
+GVguide
+
+
+BigChibi
+
+
+Damien Marble
+
+
+frederick robinson
+
+
+Ronja Render
+
+
+Matthew Kautzman
+
+
+Michael Greenhut
+
+
+Nick Johnson
+
+
+Matthew Randall
+
+
+Simon Austin
+
+
+David York
+
+
+Anatolijs Ropotovs
+
+
+Thomas Key
+
+
+spaghettiSyntax
+
+
+Classy Crustatio 
+
+
+Daniel Buttle
+
+
+Alpha Male
+
+
+Antony Moretti
+
+
+Théo CAZEMAJOU
+
+
+arcboundmouser
+
+
+Neavis
+
+
+Ruben Vergara
+
+
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ButtonBack" type="Button" parent="."]
+offset_left = 275.0
+offset_top = 9.0
+offset_right = 353.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_f1olw")
+text = "GO BACK"
+
+[connection signal="button_down" from="ButtonBack" to="." method="_on_button_back_button_down"]

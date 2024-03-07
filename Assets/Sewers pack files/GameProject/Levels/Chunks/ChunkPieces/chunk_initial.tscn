@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://yqsrmnpe7cyv"]
+
+[ext_resource type="Script" path="res://Levels/Chunks/ChunkPieces/chunk_01.gd" id="1_04ps6"]
+[ext_resource type="Texture2D" uid="uid://cm3baluqlbq1v" path="res://Layers/tileset.png" id="2_skwyh"]
+[ext_resource type="PackedScene" uid="uid://bw1onr5q2wwqh" path="res://Enemies/Soldier/soldier.tscn" id="3_kdbku"]
+[ext_resource type="PackedScene" uid="uid://dtnfcyjhhyq8c" path="res://Enemies/Soldier/soldier_jump.tscn" id="4_giapm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22yjq"]
+texture = ExtResource("2_skwyh")
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/size_in_atlas = Vector2i(3, 3)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+9:1/size_in_atlas = Vector2i(3, 3)
+9:1/0 = 0
+9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:1/0/physics_layer_0/angular_velocity = 0.0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+13:1/size_in_atlas = Vector2i(3, 3)
+13:1/0 = 0
+13:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:1/0/physics_layer_0/angular_velocity = 0.0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+
+[sub_resource type="TileSet" id="TileSet_g52kb"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_22yjq")
+
+[node name="ChunkInitial" type="Node2D"]
+script = ExtResource("1_04ps6")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="SoldierJump2" parent="Enemies" instance=ExtResource("4_giapm")]
+position = Vector2(763, 276)
+
+[node name="SoldierJump3" parent="Enemies" instance=ExtResource("4_giapm")]
+position = Vector2(350, 274)
+
+[node name="SoldierJump4" parent="Enemies" instance=ExtResource("4_giapm")]
+position = Vector2(564, 276)
+
+[node name="Soldier" parent="Enemies" instance=ExtResource("3_kdbku")]
+position = Vector2(536, 168)
+
+[node name="Soldier3" parent="Enemies" instance=ExtResource("3_kdbku")]
+position = Vector2(375, 169)
+soldier_action = 2
+
+[node name="Soldier2" parent="Enemies" instance=ExtResource("3_kdbku")]
+position = Vector2(677, 170)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_g52kb")
+format = 2
+layer_0/tile_data = PackedInt32Array(262146, 589824, 1, 262148, 589824, 1, 262149, 589824, 1, 262150, 589824, 1, 262145, 589824, 1, 262144, 589824, 1, 262151, 589824, 1, 262152, 589824, 1, 327679, 327680, 1, 262153, 589824, 1, 262154, 589824, 1, 262155, 589824, 1, 262156, 589824, 1, 262157, 589824, 1, 262158, 589824, 1, 262159, 589824, 1, 262160, 589824, 1, 262161, 589824, 1, 262162, 851968, 1, 262147, 589824, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(466.75, 13.4375)
+scale = Vector2(58.225, 0.84375)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
