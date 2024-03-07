@@ -233,6 +233,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(-2, -2)
 script = ExtResource("1_76ai2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -256,3 +257,6 @@ libraries = {
 autoplay = "Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="gun" type="Marker2D" parent="."]
+position = Vector2(22, -8)
