@@ -1,15 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh75dl0kcwri5"]
+[gd_scene load_steps=25 format=3 uid="uid://bh75dl0kcwri5"]
 
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="1_s32k6"]
-[ext_resource type="PackedScene" path="res://scenes/orb.tscn" id="2_f5gu4"]
+[ext_resource type="PackedScene" uid="uid://bsq35ejpajq2l" path="res://scenes/orb.tscn" id="2_f5gu4"]
 [ext_resource type="Theme" uid="uid://c724pqlra8477" path="res://themes/middle.tres" id="2_seall"]
 [ext_resource type="Theme" uid="uid://b8cisbgf5884q" path="res://themes/left.tres" id="3_r485o"]
 [ext_resource type="PackedScene" uid="uid://by4kypdlorkkv" path="res://scenes/bullet.tscn" id="3_y1f5v"]
 [ext_resource type="Theme" uid="uid://c353f3fjccowq" path="res://themes/right.tres" id="4_jsd7v"]
 [ext_resource type="Texture2D" uid="uid://bgpa3t6qb47e2" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Front-water/front-water1.png" id="6_vp07e"]
+[ext_resource type="Script" path="res://scenes/collectible.gd" id="7_33bhq"]
 [ext_resource type="Texture2D" uid="uid://b4twv4r22y286" path="res://Assets/Sewers pack files/Sewers pack files/Environment Layers/back.png" id="7_a5x21"]
 [ext_resource type="Texture2D" uid="uid://bv03v6p7tku0w" path="res://Assets/Sewers pack files/Sewers pack files/Environment Layers/front.png" id="8_tebar"]
 [ext_resource type="Texture2D" uid="uid://cyxgpvphrrkry" path="res://Assets/Sewers pack files/Sewers pack files/Environment Layers/tileset.png" id="9_4vx2v"]
+[ext_resource type="Script" path="res://scenes/Gold.gd" id="11_r2hig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg165"]
 size = Vector2(1153.5, 186)
@@ -25,6 +27,10 @@ size = Vector2(39, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvffn"]
 size = Vector2(20, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qmcq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17jwo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1heff"]
 texture = ExtResource("6_vp07e")
@@ -506,14 +512,12 @@ theme = ExtResource("2_seall")
 
 [node name="floorleft" type="Panel" parent="floor"]
 layout_mode = 0
-layout_mode = 0
 offset_left = -74.0
 offset_right = 14.0
 offset_bottom = 197.0
 theme = ExtResource("3_r485o")
 
 [node name="floorright" type="Panel" parent="floor"]
-layout_mode = 0
 layout_mode = 0
 offset_left = 1120.0
 offset_right = 1208.0
@@ -532,15 +536,36 @@ offset_top = -26.0
 offset_right = 20.0
 offset_bottom = 27.0
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D2"]
+[node name="Gold" type="Area2D" parent="StaticBody2D2"]
+position = Vector2(330, 350)
+script = ExtResource("7_33bhq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/Gold"]
 position = Vector2(711, 415)
 shape = SubResource("RectangleShape2D_kvffn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2/Gold"]
+sprite_frames = SubResource("SpriteFrames_0qmcq")
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/Area2D2"]
+shape = SubResource("CircleShape2D_17jwo")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_508vb")
 format = 2
 layer_0/tile_data = PackedInt32Array(1638445, 65539, 2, 1703981, 65539, 2, 1769517, 65539, 2, 1769518, 65539, 2, 1703983, 65539, 2, 1638447, 65539, 2, 1638446, 65539, 2, 1572910, 131075, 1, 1572909, 131075, 1, 1703982, 65539, 2, 1572911, 131075, 1, 1769519, 65539, 2, 1572908, 393219, 2, 1638444, 393219, 2, 1703980, 393219, 2, 1769516, 393219, 2)
 
-[connection signal="body_entered" from="StaticBody2D2/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Gold" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+script = ExtResource("11_r2hig")
+
+[connection signal="body_entered" from="StaticBody2D2/Gold" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="StaticBody2D2/Gold" to="Player" method="_on_collectible_body_entered"]
+[connection signal="body_entered" from="StaticBody2D2/Gold" to="StaticBody2D2/Gold" method="_on_body_entered"]
