@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=27 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bvcjxkuhvbjcr" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run4.png" id="14_t5s1o"]
 [ext_resource type="Texture2D" uid="uid://cncfls13oasjl" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run5.png" id="15_auiog"]
 [ext_resource type="Texture2D" uid="uid://bsgshdr63p60w" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run6.png" id="16_jl1on"]
-[ext_resource type="Texture2D" uid="uid://dxicwva4ww0wg" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/shoot.png" id="17_gf603"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va3pr"]
 height = 54.0
@@ -90,14 +89,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_gf603")
-}],
-"loop": true,
-"name": &"shoot",
 "speed": 5.0
 }]
 
