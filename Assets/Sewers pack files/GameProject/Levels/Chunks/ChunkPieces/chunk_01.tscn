@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://csbbirpmwrp61"]
+
+[ext_resource type="Script" path="res://Levels/Chunks/ChunkPieces/chunk_01.gd" id="1_4yugg"]
+[ext_resource type="PackedScene" uid="uid://bw1onr5q2wwqh" path="res://Enemies/Soldier/soldier.tscn" id="2_ltpfc"]
+[ext_resource type="TileSet" uid="uid://y16qkjaxsn45" path="res://Levels/Chunks/ChunkPieces/new_tile_set.tres" id="2_qpx8q"]
+
+[node name="Chunk" type="Node2D"]
+script = ExtResource("1_4yugg")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_qpx8q")
+format = 2
+layer_0/tile_data = PackedInt32Array(262146, 589824, 1, 262145, 589824, 1, 262144, 589824, 1, 327679, 327680, 1, 262149, 327680, 1, 262150, 589824, 1, 262147, 851968, 1, 262152, 851968, 1, 262151, 589824, 1)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Soldier" parent="Enemies" instance=ExtResource("2_ltpfc")]
+position = Vector2(58, 165)
+
+[node name="Soldier2" parent="Enemies" instance=ExtResource("2_ltpfc")]
+position = Vector2(316, 166)
+soldier_action = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(176, 13.4375)
+scale = Vector2(29.15, 0.84375)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

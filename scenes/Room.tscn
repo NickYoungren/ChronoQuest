@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8s6jg6f2gr2a"]
+
+[sub_resource type="GDScript" id="GDScript_l60uq"]
+script/source = "extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_sensor_body_entered(body):
+	print(\"test\")
+	var door = get_node(\"door\")
+	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.set_loops().set_parallel(false)
+	tween.tween_property(door, \"position\", Vector2(0, 5), 0.5) # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abr2t"]
+size = Vector2(38, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fnei"]
+size = Vector2(225.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2mxl"]
+size = Vector2(35, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kx7a"]
+size = Vector2(20, 58)
+
+[node name="Room" type="Node2D"]
+
+[node name="room" type="StaticBody2D" parent="."]
+position = Vector2(666, 367)
+script = SubResource("GDScript_l60uq")
+
+[node name="door" type="CollisionShape2D" parent="room"]
+position = Vector2(-6, -80)
+shape = SubResource("RectangleShape2D_abr2t")
+
+[node name="Panel" type="Panel" parent="room/door"]
+offset_left = -20.0
+offset_top = -88.0
+offset_right = 21.0
+offset_bottom = 90.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="room"]
+position = Vector2(130, -74)
+shape = SubResource("RectangleShape2D_3fnei")
+
+[node name="Panel" type="Panel" parent="room/CollisionShape2D2"]
+offset_left = -117.0
+offset_top = -11.0
+offset_right = 113.0
+offset_bottom = 13.0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="room"]
+position = Vector2(234, 13)
+shape = SubResource("RectangleShape2D_x2mxl")
+
+[node name="Panel" type="Panel" parent="room/CollisionShape2D3"]
+offset_left = -22.0
+offset_top = -76.0
+offset_right = 16.0
+offset_bottom = 77.0
+
+[node name="sensor" type="Area2D" parent="room"]
+position = Vector2(-45, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room/sensor"]
+position = Vector2(30, 41)
+shape = SubResource("RectangleShape2D_6kx7a")
+
+[connection signal="body_entered" from="room/sensor" to="room" method="_on_sensor_body_entered"]

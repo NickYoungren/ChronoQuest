@@ -1,0 +1,143 @@
+[gd_scene load_steps=23 format=3 uid="uid://ip30ss0fmihm"]
+
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_3oscs"]
+[ext_resource type="Shader" path="res://Shaders/scrolling.gdshader" id="1_td7r7"]
+[ext_resource type="Texture2D" uid="uid://g3wupbj3gwps" path="res://Layers/back copy.png" id="3_erqo1"]
+[ext_resource type="Texture2D" uid="uid://c3afpips5b31n" path="res://Layers/back-water-1.png" id="3_jyuni"]
+[ext_resource type="Texture2D" uid="uid://bic53qi0pywf6" path="res://Layers/middle.png" id="4_3klkc"]
+[ext_resource type="Texture2D" uid="uid://cx00kdtiwssxg" path="res://Layers/back-water-2.png" id="4_xix23"]
+[ext_resource type="Texture2D" uid="uid://cpp8c476u4oym" path="res://Layers/back-water-3.png" id="5_6odbp"]
+[ext_resource type="Texture2D" uid="uid://b1rf328guqnb4" path="res://Layers/water-tile.png" id="5_et4ur"]
+[ext_resource type="PackedScene" uid="uid://bbx5b7dj8703y" path="res://Levels/Chunks/ChunksHolder.tscn" id="7_7w8rm"]
+[ext_resource type="Texture2D" uid="uid://dhglbv2freerm" path="res://Layers/front-water1.png" id="10_g645d"]
+[ext_resource type="Texture2D" uid="uid://b66t6rnds6tpe" path="res://Layers/front-water2.png" id="11_4y7tj"]
+[ext_resource type="Texture2D" uid="uid://c8gjvx5qlkmgb" path="res://Layers/front-water3.png" id="12_33im7"]
+[ext_resource type="Texture2D" uid="uid://eg6wudltwv5k" path="res://Layers/front-water4.png" id="13_sfwpq"]
+[ext_resource type="AudioStream" uid="uid://dp6bumaab7abe" path="res://Sounds/rainbowlaser.ogg" id="14_tctbl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kehsv"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3b0n"]
+resource_local_to_scene = true
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajfom"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ragsd"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjkmp"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y11ac"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 1.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_748de"]
+shader = ExtResource("1_td7r7")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 1.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_brant"]
+frames = 4
+speed_scale = 12.0
+frame_0/texture = ExtResource("10_g645d")
+frame_1/texture = ExtResource("11_4y7tj")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("12_33im7")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("13_sfwpq")
+frame_3/duration = 1.0
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_3oscs")
+
+[node name="BG" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Back" type="TextureRect" parent="BG"]
+modulate = Color(0.764706, 0.87451, 0.662745, 1)
+material = SubResource("ShaderMaterial_kehsv")
+offset_right = 384.0
+offset_bottom = 240.0
+texture = ExtResource("3_erqo1")
+stretch_mode = 1
+
+[node name="BackWater1" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_y3b0n")
+offset_top = 160.0
+offset_right = 373.0
+offset_bottom = 172.0
+texture = ExtResource("3_jyuni")
+stretch_mode = 1
+
+[node name="BackWater2" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_ajfom")
+offset_top = 171.0
+offset_right = 372.0
+offset_bottom = 185.0
+texture = ExtResource("4_xix23")
+stretch_mode = 1
+
+[node name="BackWater3" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_ragsd")
+offset_top = 185.0
+offset_right = 372.0
+offset_bottom = 208.0
+texture = ExtResource("5_6odbp")
+stretch_mode = 1
+
+[node name="Walls" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_jjkmp")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_3klkc")
+stretch_mode = 1
+
+[node name="WaterTile2" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_y11ac")
+offset_left = -1.0
+offset_top = 197.0
+offset_right = 380.0
+offset_bottom = 245.0
+texture = ExtResource("5_et4ur")
+stretch_mode = 1
+
+[node name="WaterTile" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_748de")
+offset_left = 1.0
+offset_top = 193.0
+offset_right = 372.0
+offset_bottom = 198.0
+texture = ExtResource("5_et4ur")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Chunk" parent="." instance=ExtResource("7_7w8rm")]
+
+[node name="WaterFront" type="TextureRect" parent="."]
+z_index = 3
+offset_left = 1.0
+offset_top = 217.0
+offset_right = 427.0
+offset_bottom = 257.0
+texture = SubResource("AnimatedTexture_brant")
+stretch_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_tctbl")
+volume_db = -5.0
+autoplay = true

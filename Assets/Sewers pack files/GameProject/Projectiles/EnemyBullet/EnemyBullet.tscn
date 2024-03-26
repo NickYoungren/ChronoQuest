@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://blo1ragd1nfcp"]
+
+[ext_resource type="Script" path="res://Projectiles/EnemyBullet/EnemyBullet.gd" id="1_qrv2i"]
+[ext_resource type="Texture2D" uid="uid://bwc2sml0jij6e" path="res://Projectiles/EnemyBullet/enemy-bullet.png" id="2_6ukpa"]
+[ext_resource type="AudioStream" uid="uid://rd1hx7i5h2r7" path="res://Sounds/shot.wav" id="3_e1crp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5i1j"]
+atlas = ExtResource("2_6ukpa")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbsvl"]
+atlas = ExtResource("2_6ukpa")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idtbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5i1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbsvl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o84cx"]
+size = Vector2(4, 4)
+
+[node name="EnemyBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qrv2i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_idtbp")
+frame_progress = 0.641594
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o84cx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.7, 0.7)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e1crp")
+autoplay = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
