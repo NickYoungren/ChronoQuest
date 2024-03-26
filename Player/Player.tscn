@@ -338,6 +338,7 @@ animation = &"Fall"
 frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -80)
 zoom = Vector2(1.6, 1.6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

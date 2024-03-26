@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxuxb8300r0wv"]
+[gd_scene load_steps=12 format=3 uid="uid://b0wngpyqygjj3"]
 
-[ext_resource type="Texture2D" uid="uid://q1s1t3e6ulqr" path="res://Assets/bush.png" id="1_ftnoe"]
+[ext_resource type="Texture2D" uid="uid://beqshxddu0w0t" path="res://Assets/bush.png" id="1_ftnoe"]
 [ext_resource type="Script" path="res://scenes/Area2D.gd" id="1_yt6mb"]
-[ext_resource type="Texture2D" uid="uid://da26rg623ucwc" path="res://Assets/null.png" id="2_33616"]
-[ext_resource type="Texture2D" uid="uid://bxdm8x1i3evaa" path="res://Assets/tree.png" id="4_7cmvn"]
+[ext_resource type="Texture2D" uid="uid://bfpawqkhjhl70" path="res://Assets/null.png" id="2_33616"]
+[ext_resource type="Texture2D" uid="uid://iy1e4arrg3e8" path="res://Assets/tree.png" id="4_7cmvn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cy1a7"]
 animations = [{

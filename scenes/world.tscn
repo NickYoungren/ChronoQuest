@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bh75dl0kcwri5"]
+[gd_scene load_steps=23 format=3 uid="uid://bh75dl0kcwri5"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_32wlg"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="1_s32k6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cchj1unkbglw5" path="res://Assets/Capture.PNG" id="12_oqve5"]
 [ext_resource type="PackedScene" uid="uid://e85of1k3eoym" path="res://scenes/parallax_background.tscn" id="14_8agtr"]
 [ext_resource type="PackedScene" uid="uid://do1d4qk6y2oo3" path="res://scenes/Collectibles/Coin.tscn" id="16_jx6gl"]
+[ext_resource type="PackedScene" path="res://scenes/TimeTree.tscn" id="17_yc42k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xw5bt"]
 texture = ExtResource("2_ka6eu")
@@ -782,6 +783,9 @@ position = Vector2(488, 469)
 
 [node name="Coin2" parent="collectibles" instance=ExtResource("16_jx6gl")]
 position = Vector2(856, 373)
+
+[node name="TimeTree" parent="." instance=ExtResource("17_yc42k")]
+position = Vector2(792, 479)
 
 [connection signal="death" from="Player/Player" to="HUD" method="_on_player_death"]
 [connection signal="victory" from="Player/Player" to="HUD" method="_on_player_victory"]
