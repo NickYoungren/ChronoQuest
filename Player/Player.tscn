@@ -1,8 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=32 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
+[ext_resource type="Texture2D" uid="uid://m18yvfirq250" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/fall/fall1.png" id="2_wd4fa"]
 [ext_resource type="Texture2D" uid="uid://cl0evpp0mmstp" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/idle/idle1.png" id="3_k0abf"]
+[ext_resource type="Texture2D" uid="uid://bqjm756icebgm" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/fall/fall2.png" id="3_w8f7m"]
+[ext_resource type="Texture2D" uid="uid://6gu0kjg0wp1t" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/fall/fall3.png" id="4_bb1lu"]
 [ext_resource type="Texture2D" uid="uid://c8rk8sm6h411f" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/idle/idle2.png" id="4_wpelc"]
 [ext_resource type="Texture2D" uid="uid://cba7c02au4r4e" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/idle/idle3.png" id="5_yh0ks"]
 [ext_resource type="Texture2D" uid="uid://b3du0d804s66d" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/idle/idle4.png" id="6_8cp6h"]
@@ -16,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bvcjxkuhvbjcr" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run4.png" id="14_t5s1o"]
 [ext_resource type="Texture2D" uid="uid://cncfls13oasjl" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run5.png" id="15_auiog"]
 [ext_resource type="Texture2D" uid="uid://bsgshdr63p60w" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run6.png" id="16_jl1on"]
+[ext_resource type="Texture2D" uid="uid://dxicwva4ww0wg" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/shoot.png" id="20_6cl0y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va3pr"]
 height = 54.0
@@ -26,6 +30,20 @@ region = Rect2(0, 462, 64, 77)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pbtd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wd4fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w8f7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bb1lu")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tgy7p")
@@ -90,9 +108,17 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_6cl0y")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 1.0
 }]
 
-[sub_resource type="Animation" id="Animation_2hdc7"]
+[sub_resource type="Animation" id="Animation_4tj2x"]
 resource_name = "Fall"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -104,7 +130,34 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Jump"]
+"values": [&"Fall"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_e74i4"]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hurt"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -116,11 +169,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
-
-[sub_resource type="Animation" id="Animation_e74i4"]
-resource_name = "Hurt"
 
 [sub_resource type="Animation" id="Animation_pldim"]
 resource_name = "Idle"
@@ -172,10 +222,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [1, 1]
 }
 
 [sub_resource type="Animation" id="Animation_u16yj"]
@@ -191,6 +241,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Fall"]
 }
 
 [sub_resource type="Animation" id="Animation_ltbiu"]
@@ -222,14 +284,43 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_jd6ux"]
+resource_name = "Shoot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Shoot"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vfi7"]
 _data = {
-"Fall": SubResource("Animation_2hdc7"),
+"Fall": SubResource("Animation_4tj2x"),
 "Hurt": SubResource("Animation_e74i4"),
 "Idle": SubResource("Animation_pldim"),
 "Jump": SubResource("Animation_yn46q"),
 "RESET": SubResource("Animation_u16yj"),
-"Run": SubResource("Animation_ltbiu")
+"Run": SubResource("Animation_ltbiu"),
+"Shoot": SubResource("Animation_jd6ux")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -243,9 +334,8 @@ shape = SubResource("CapsuleShape2D_va3pr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_1pbtd")
-animation = &"Jump"
+animation = &"Fall"
 frame = 1
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.6, 1.6)
@@ -255,8 +345,6 @@ libraries = {
 "": SubResource("AnimationLibrary_3vfi7")
 }
 autoplay = "Idle"
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
 
 [node name="gun" type="Marker2D" parent="."]
 position = Vector2(22, -8)

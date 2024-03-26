@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://e85of1k3eoym"]
 
-[ext_resource type="Script" path="res://scenes/parallax_background.gd" id="1_dapvi"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="1_dapvi"]
 [ext_resource type="Texture2D" uid="uid://bv03v6p7tku0w" path="res://Assets/Sewers pack files/Sewers pack files/Environment Layers/front.png" id="1_thupj"]
 [ext_resource type="Texture2D" uid="uid://c4uw6ewlwu0de" path="res://Assets/Sewers pack files/Sewers pack files/Environment Layers/middle.png" id="3_rfu57"]
 
