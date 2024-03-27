@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0wngpyqygjj3"]
+[gd_scene load_steps=17 format=3 uid="uid://b0wngpyqygjj3"]
 
 [ext_resource type="Texture2D" uid="uid://beqshxddu0w0t" path="res://Assets/bush.png" id="1_ftnoe"]
 [ext_resource type="Script" path="res://scenes/Area2D.gd" id="1_yt6mb"]
@@ -101,9 +101,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcr1d"]
-size = Vector2(20, 12)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1brm"]
 size = Vector2(29, 19)
 
@@ -148,10 +145,6 @@ autoplay = "Null"
 sleeping = true
 lock_rotation = true
 freeze = true
-
-[node name="Bush" type="CollisionShape2D" parent="Area2D/RigidBody2D"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_dcr1d")
 
 [node name="Tree" type="CollisionShape2D" parent="Area2D/RigidBody2D"]
 position = Vector2(1, -22)
