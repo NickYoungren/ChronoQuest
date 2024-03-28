@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8s6jg6f2gr2a"]
+[gd_scene load_steps=19 format=3 uid="uid://b8s6jg6f2gr2a"]
 
 [ext_resource type="Texture2D" uid="uid://707taj15racd" path="res://Assets/Sewers pack files/Tiles/tileset.png" id="1_0fxh7"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="2_myftt"]
 [ext_resource type="PackedScene" uid="uid://bsq35ejpajq2l" path="res://scenes/orb.tscn" id="3_6yp4y"]
 [ext_resource type="PackedScene" uid="uid://by4kypdlorkkv" path="res://scenes/bullet.tscn" id="4_7km5r"]
 [ext_resource type="PackedScene" uid="uid://e85of1k3eoym" path="res://scenes/parallax_background.tscn" id="5_1j5am"]
+[ext_resource type="PackedScene" uid="uid://do1d4qk6y2oo3" path="res://scenes/Collectibles/Coin.tscn" id="6_tlo46"]
+[ext_resource type="Texture2D" uid="uid://cchj1unkbglw5" path="res://Assets/Capture.PNG" id="7_ewicv"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="8_bcayw"]
+[ext_resource type="Script" path="res://scripts/HP.gd" id="9_q308c"]
 
 [sub_resource type="GDScript" id="GDScript_l60uq"]
 script/source = "extends StaticBody2D
@@ -330,12 +334,15 @@ texture = ExtResource("1_0fxh7")
 14:9/0 = 0
 14:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:9/0/physics_layer_0/angular_velocity = 0.0
+14:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:9/0 = 0
 15:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:9/0/physics_layer_0/angular_velocity = 0.0
+15:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:9/0 = 0
 16:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 16:9/0/physics_layer_0/angular_velocity = 0.0
+16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:10/0 = 0
 0:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:10/0/physics_layer_0/angular_velocity = 0.0
@@ -1162,6 +1169,23 @@ texture = ExtResource("1_0fxh7")
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_0awwu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dm5ce"]
+size = Vector2(40.275, 53.5)
+
+[sub_resource type="GDScript" id="GDScript_jtxuq"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Gold: \" + str(Game.Gold)
+"
+
 [node name="Room" type="Node2D"]
 
 [node name="room" type="StaticBody2D" parent="."]
@@ -1169,14 +1193,14 @@ position = Vector2(659, 390)
 script = SubResource("GDScript_l60uq")
 
 [node name="door" type="CollisionShape2D" parent="room"]
-position = Vector2(-3, -90.5)
+position = Vector2(-2, -139)
 shape = SubResource("RectangleShape2D_abr2t")
 
 [node name="TileMap" type="TileMap" parent="room/door"]
 position = Vector2(-16, -88)
 tile_set = SubResource("TileSet_v6if3")
 format = 2
-layer_0/tile_data = PackedInt32Array(655361, 589824, 10, 655360, 327680, 10, 589825, 589824, 9, 524289, 589824, 9, 458753, 589824, 9, 393217, 589824, 9, 262145, 589824, 9, 196609, 589824, 9, 131073, 589824, 9, 65537, 589824, 9, 1, 589824, 7, 589824, 327680, 9, 524288, 327680, 9, 458752, 327680, 9, 393216, 327680, 9, 327680, 327680, 9, 262144, 327680, 9, 196608, 327680, 9, 131072, 327680, 9, 65536, 327680, 9, 0, 327680, 7, 327681, 589824, 9)
+layer_0/tile_data = PackedInt32Array(655361, 589824, 10, 655360, 327680, 10, 589825, 589824, 9, 524289, 589824, 9, 458753, 589824, 9, 393217, 589824, 9, 262145, 589824, 9, 196609, 589824, 9, 131073, 589824, 9, 65537, 589824, 9, 1, 589824, 7, 589824, 327680, 9, 524288, 327680, 9, 458752, 327680, 9, 393216, 327680, 9, 327680, 327680, 9, 262144, 327680, 9, 196608, 327680, 9, 131072, 327680, 9, 65536, 327680, 9, 0, 327680, 7, 327681, 589824, 9, 458749, 917504, 9, 458750, 983040, 9, 458751, 1048576, 9, 196606, 983040, 9, 196607, 1048576, 9)
 
 [node name="sensor" type="Area2D" parent="room"]
 position = Vector2(-45, 18)
@@ -1204,5 +1228,67 @@ visible = false
 position = Vector2(-58, -350)
 
 [node name="bg" parent="." instance=ExtResource("5_1j5am")]
+
+[node name="collectibles" type="Node2D" parent="."]
+
+[node name="Coin" parent="collectibles" instance=ExtResource("6_tlo46")]
+position = Vector2(754, 464)
+
+[node name="Coin3" parent="collectibles" instance=ExtResource("6_tlo46")]
+position = Vector2(714, 464)
+
+[node name="Coin2" parent="collectibles" instance=ExtResource("6_tlo46")]
+position = Vector2(791, 464)
+
+[node name="win" type="Area2D" parent="."]
+position = Vector2(4.89, 0)
+
+[node name="target" type="CollisionShape2D" parent="win"]
+position = Vector2(876.11, 272)
+shape = SubResource("RectangleShape2D_dm5ce")
+
+[node name="TextureRect" type="TextureRect" parent="win"]
+offset_left = 846.11
+offset_top = 243.0
+offset_right = 908.11
+offset_bottom = 301.0
+texture = ExtResource("7_ewicv")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("8_bcayw")
+
+[node name="numItems" type="Label" parent="HUD"]
+offset_right = 86.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Items 0/1
+"
+
+[node name="message_label" type="Label" parent="HUD"]
+offset_left = 80.0
+offset_top = 318.0
+offset_right = 289.0
+offset_bottom = 341.0
+
+[node name="HP" type="Label" parent="HUD"]
+offset_left = 47.0
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "HP"
+script = ExtResource("9_q308c")
+
+[node name="Gold" type="Label" parent="HUD"]
+offset_left = 39.0
+offset_top = 78.0
+offset_right = 131.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Gold"
+script = SubResource("GDScript_jtxuq")
 
 [connection signal="body_entered" from="room/sensor" to="room" method="_on_sensor_body_entered"]
