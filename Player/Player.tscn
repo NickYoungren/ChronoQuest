@@ -349,3 +349,8 @@ autoplay = "Idle"
 
 [node name="gun" type="Marker2D" parent="."]
 position = Vector2(22, -8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

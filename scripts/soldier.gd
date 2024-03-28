@@ -4,14 +4,15 @@ var SPEED = 50
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player
 var chase = false
-
+var stunned = false
+@onready var timer: Timer = $Timer
 
 func _ready():
 	get_node("AnimatedSprite2D").play("Walk")
 func _physics_process(delta):
 	#Gravity for Frog
 	velocity.y += gravity * delta
-	if chase == true:
+	if chase == true && !stunned:
 		if get_node("AnimatedSprite2D").animation != "Death":
 			get_node("AnimatedSprite2D").play("Walk")
 		player = get_node("../../Player/Player")
@@ -27,7 +28,7 @@ func _physics_process(delta):
 		velocity.x = 0	
 	move_and_slide()
 func _on_player_detection_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" && !stunned:
 		chase = true
 		
 
@@ -53,3 +54,13 @@ func _on_player_collision_body_entered(body):
 	if body.name == "Player":
 		Game.playerHP -= 3;
 		death()
+
+
+func stun():
+	print("stunned")
+	stunned = true
+	timer.start()
+
+func _on_timer_timeout():
+	print("stun over")
+	stunned = false

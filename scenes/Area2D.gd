@@ -53,29 +53,17 @@ func change_state(new_state):
 			anim3.play("Null")
 			treecol.set_deferred("disabled", true)
 			treecol2.set_deferred("disabled", true)
-			# Set your collision shape size for the idle state
-			#collision_shape.shape = RectangleShape2D.new()
-			#collision_shadisconnect()pe.shape.extents = Vector2(10, 10)
 		SaplingStates.tree:
 			anim.play("Null")
 			anim2.play("Tree")
 			anim3.play("Null")
 			treecol.set_deferred("disabled", false)
 			treecol2.set_deferred("disabled", true)
-			#treecol2.position = Vector2(-500, -500)
-			# Set the collision shape size to match the growing animation
-			#collision_shape.shape = RectangleShape2D.new()
-			#collision_shape.shape.extents = Vector2(20, 20)
-			# Additional logic for the growing state (if any)
 		SaplingStates.palm:
 			anim.play("Null")
 			anim2.play("Null")
 			anim3.play("Tree2")
 			treecol2.set_deferred("disabled", false)
-			# Set the collision shape size to match the growing animation
-			#collision_shape.shape = RectangleShape2D.new()
-			#collision_shape.shape.extents = Vector2(20, 20)
-			# Additional logic for the growing state (if any)
 
 
 func _on_body_entered(body):

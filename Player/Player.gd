@@ -13,17 +13,18 @@ var rew = false
 var shooter=false
 var message_label
 @onready var anim = get_node("AnimationPlayer")
-
+@onready var timer: Timer = $Timer
 @export var orb : PackedScene
 @export var bullet : PackedScene
-
+var sready = true
 signal death()
 signal victory()
 
 
 func _ready() -> void:
 	message_label = get_node("/root/Level1/HUD/message_label")
-	message_label.hide() # Hide the label initially
+	if message_label:
+		message_label.hide() # Hide the label initially
 
 	
 
@@ -53,6 +54,7 @@ func shoot():
 	else:
 		bul.position = position
 
+
 func _physics_process(delta):
 	orb = load("res://scenes/orb.tscn")
 	bullet = load("res://scenes/bullet.tscn")
@@ -76,12 +78,13 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("rewind"):
 		rewind()
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && sready:
 		if !direction && velocity.y == 0:
 			get_node("AnimatedSprite2D").play("Shoot")
 		#await get_node("AnimatedSprite2D").animation_finished
-		print("Shooting")
 		shoot()
+		timer.start()
+		sready = false
 	if direction == -1:
 		get_node("AnimatedSprite2D").flip_h = true
 		flipped = -1
@@ -96,7 +99,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if velocity.y == 0 :
-			print("IDLE")
+			#print("IDLE")
 			anim.play("Idle")
 	if velocity.y > 0:
 		print("Falling")
@@ -124,3 +127,7 @@ func _on_win_body_entered(body):
 	if body.name == "Player":
 		victory.emit()
 
+
+
+func _on_timer_timeout():
+	sready = true # Replace with function body.
