@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() && anim.current_animation != "rewind":
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor()  && anim.current_animation != "rewind":
 		velocity.y = JUMP_VELOCITY
 		anim.play("Jump")
 
@@ -84,7 +84,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("rewind"):
 		rewind()
-	if Input.is_action_just_pressed("shoot") && sready && anim.current_animation != "rewind":
+	if Input.is_action_just_pressed("shoot") && sready  && anim.current_animation != "rewind":
 		if !direction && velocity.y == 0:
 			get_node("AnimatedSprite2D").play("Shoot")
 		#await get_node("AnimatedSprite2D").animation_finished
@@ -99,14 +99,13 @@ func _physics_process(delta):
 		flipped = 1
 	if direction:
 		velocity.x = direction * SPEED
-		if velocity.y == 0 && anim.current_animation != "rewind":
-
+		if velocity.y == 0  && anim.current_animation != "rewind":
 			anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if velocity.y == 0 && anim.current_animation != "rewind":
 			anim.play("Idle")
-	if velocity.y > 0 && anim.current_animation != "rewind":
+	if velocity.y > 0  && anim.current_animation != "rewind":
 		anim.play("Fall")
 	move_and_slide()
 	if Game.playerHP <= 0:
