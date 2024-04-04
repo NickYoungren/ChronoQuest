@@ -7,6 +7,7 @@ var rewp = position
 var b
 var bul
 var flipped = 1
+var tween
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var rew = false
@@ -39,7 +40,10 @@ func rewind():
 		b.position = position
 		rewp = position
 	else:
-		position = rewp
+		get_node("AnimationPlayer").play("rewind")
+		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		tween.set_loops().set_parallel(false)
+		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.5)
 		owner.remove_child(b)
 	rew = !rew;
 	
@@ -58,7 +62,10 @@ func shoot():
 func _physics_process(delta):
 	orb = load("res://scenes/orb.tscn")
 	bullet = load("res://scenes/bullet.tscn")
-	
+	if position == rewp:
+		if tween:
+			tween.kill()
+			anim.play("Idle")
 
 	if Input.is_action_just_pressed('reset_level'):
 		reset_level()
@@ -68,9 +75,8 @@ func _physics_process(delta):
 
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() && anim.current_animation != "rewind":
 		velocity.y = JUMP_VELOCITY
-		print("JUMPING")
 		anim.play("Jump")
 
 	# Get the input direction and handle the movement/deceleration.
@@ -78,7 +84,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("rewind"):
 		rewind()
-	if Input.is_action_just_pressed("shoot") && sready:
+	if Input.is_action_just_pressed("shoot") && sready && anim.current_animation != "rewind":
 		if !direction && velocity.y == 0:
 			get_node("AnimatedSprite2D").play("Shoot")
 		#await get_node("AnimatedSprite2D").animation_finished
@@ -93,19 +99,16 @@ func _physics_process(delta):
 		flipped = 1
 	if direction:
 		velocity.x = direction * SPEED
-		if velocity.y == 0:
-			print("RUNNING")
+		if velocity.y == 0 && anim.current_animation != "rewind":
+
 			anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y == 0 :
-			#print("IDLE")
+		if velocity.y == 0 && anim.current_animation != "rewind":
 			anim.play("Idle")
-	if velocity.y > 0:
-		print("Falling")
+	if velocity.y > 0 && anim.current_animation != "rewind":
 		anim.play("Fall")
 	move_and_slide()
-	
 	if Game.playerHP <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/Game.tscn")

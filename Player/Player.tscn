@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=33 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cncfls13oasjl" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run5.png" id="15_auiog"]
 [ext_resource type="Texture2D" uid="uid://bsgshdr63p60w" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run6.png" id="16_jl1on"]
 [ext_resource type="Texture2D" uid="uid://dxicwva4ww0wg" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/shoot.png" id="20_6cl0y"]
+[ext_resource type="Texture2D" uid="uid://d0xg0qsvrbx78" path="res://Assets/lightningball.png" id="21_f4bsa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va3pr"]
 height = 54.0
@@ -116,6 +117,23 @@ animations = [{
 "loop": true,
 "name": &"Shoot",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_f4bsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f4bsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f4bsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f4bsa")
+}],
+"loop": true,
+"name": &"rewind",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_4tj2x"]
@@ -335,7 +353,6 @@ shape = SubResource("CapsuleShape2D_va3pr")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_1pbtd")
 animation = &"Fall"
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -80)

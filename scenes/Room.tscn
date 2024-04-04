@@ -25,7 +25,6 @@ func _process(delta):
 
 
 func _on_sensor_body_entered(body):
-	print(\"test\")
 	var door = get_node(\"door\")
 	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.set_loops().set_parallel(false)
@@ -1292,3 +1291,4 @@ text = "Gold"
 script = SubResource("GDScript_jtxuq")
 
 [connection signal="body_entered" from="room/sensor" to="room" method="_on_sensor_body_entered"]
+[connection signal="body_entered" from="win" to="Player/Player" method="_on_win_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bh75dl0kcwri5"]
+[gd_scene load_steps=24 format=3 uid="uid://bh75dl0kcwri5"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_32wlg"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="1_s32k6"]
@@ -36,8 +36,12 @@ func _process(delta):
 size = Vector2(40.275, 53.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_roack"]
-radius = 7.0
-height = 40.0
+radius = 14.0
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7lv0"]
+radius = 17.0
+height = 60.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xw5bt"]
 texture = ExtResource("2_ka6eu")
@@ -742,15 +746,23 @@ texture = ExtResource("12_oqve5")
 
 [node name="trap" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
-position = Vector2(116, 460)
+[node name="RigidBody2D" type="RigidBody2D" parent="trap"]
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap/RigidBody2D"]
+position = Vector2(115, 467)
 shape = SubResource("CapsuleShape2D_roack")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
+position = Vector2(115, 467)
+shape = SubResource("CapsuleShape2D_l7lv0")
+
 [node name="TextureRect" type="TextureRect" parent="trap"]
-offset_left = 95.0
-offset_top = 442.0
-offset_right = 138.0
-offset_bottom = 486.0
+offset_left = 94.0
+offset_top = 439.0
+offset_right = 137.0
+offset_bottom = 483.0
 texture = ExtResource("10_c7bxa")
 
 [node name="mobs" type="Node2D" parent="."]
