@@ -40,7 +40,7 @@ func rewind():
 		b.position = position
 		rewp = position
 	else:
-		get_node("AnimationPlayer").play("rewind")
+		anim.play("rewind")
 		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.set_loops().set_parallel(false)
 		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.5)
@@ -129,6 +129,7 @@ func _on_trap_body_entered(body):
 func _on_win_body_entered(body):
 	if body.name == "Player":
 		victory.emit()
+		get_tree().change_scene_to_file("res://scenes/level_complete.tscn")
 
 
 
