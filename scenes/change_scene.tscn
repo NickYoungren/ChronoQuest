@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://mhgdp3j3hpvf"]
+
+[ext_resource type="Script" path="res://CanvasLayer.gd" id="1_745yc"]
+
+[sub_resource type="Animation" id="Animation_pisby"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xmqsl"]
+resource_name = "dissolve"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ru5i"]
+_data = {
+"RESET": SubResource("Animation_pisby"),
+"dissolve": SubResource("Animation_xmqsl")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_745yc")
+
+[node name="dissolve" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1194.0
+offset_bottom = 682.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../dissolve")
+libraries = {
+"": SubResource("AnimationLibrary_5ru5i")
+}

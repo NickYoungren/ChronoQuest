@@ -111,7 +111,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if Game.playerHP <= 0:
 		queue_free()
-		get_tree().change_scene_to_file("res://scenes/Game.tscn")
+		ChangeScene.change_scene("res://scenes/Game.tscn")
 		
 #currently the respawn button is Q
 func handleRespawn():
@@ -119,7 +119,7 @@ func handleRespawn():
 	
 func reset_level():
 	queue_free()
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	ChangeScene.change_scene("res://scenes/Game.tscn")
 
 func _on_trap_body_entered(body):
 	if body.name == "Player":
@@ -129,7 +129,7 @@ func _on_trap_body_entered(body):
 func _on_win_body_entered(body):
 	if body.name == "Player":
 		victory.emit()
-		get_tree().change_scene_to_file("res://scenes/level_complete.tscn")
+		ChangeScene.change_scene("res://scenes/level_complete.tscn")
 
 
 

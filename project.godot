@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Game="*res://Global/Game.gd"
 Utils="*res://Global/Utils.gd"
+ChangeScene="*res://scenes/change_scene.tscn"
 
 [dotnet]
 
