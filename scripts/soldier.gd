@@ -23,7 +23,7 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").flip_h = false
 		velocity.x = direction.x * SPEED
 	else:
-		if get_node("AnimatedSprite2D").animation != "Death":
+		if get_node("AnimatedSprite2D").animation != "Death" && !stunned:
 			get_node("AnimatedSprite2D").play("Idle")
 		velocity.x = 0	
 	move_and_slide()
@@ -57,10 +57,9 @@ func _on_player_collision_body_entered(body):
 
 
 func stun():
-	print("stunned")
+	get_node("AnimatedSprite2D").play("stunned")
 	stunned = true
 	timer.start()
 
 func _on_timer_timeout():
-	print("stun over")
 	stunned = false

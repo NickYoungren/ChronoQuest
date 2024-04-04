@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=34 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
@@ -121,19 +121,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("21_f4bsa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_f4bsa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_f4bsa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_f4bsa")
 }],
 "loop": true,
 "name": &"rewind",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="Animation" id="Animation_4tj2x"]
@@ -330,6 +321,33 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_pf8sa"]
+resource_name = "rewind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"rewind"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vfi7"]
 _data = {
 "Fall": SubResource("Animation_4tj2x"),
@@ -338,7 +356,8 @@ _data = {
 "Jump": SubResource("Animation_yn46q"),
 "RESET": SubResource("Animation_u16yj"),
 "Run": SubResource("Animation_ltbiu"),
-"Shoot": SubResource("Animation_jd6ux")
+"Shoot": SubResource("Animation_jd6ux"),
+"rewind": SubResource("Animation_pf8sa")
 }
 
 [node name="Player" type="CharacterBody2D"]
