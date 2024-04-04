@@ -11,9 +11,6 @@ func setDir(d):
 func _process(delta):
 	position += transform.x * speed * delta * dir
 	
-
-
-
 func _on_body_entered(body):
 	if body.get_parent().name == "mobs":
 		body.stun()
