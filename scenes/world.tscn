@@ -709,9 +709,9 @@ position = Vector2(166, 379)
 script = ExtResource("11_5md1d")
 
 [node name="dialogbox" parent="." instance=ExtResource("18_k4q0e")]
-offset = Vector2(383.545, 450)
+offset = Vector2(50, 470)
 scale = Vector2(0.32, 0.32)
-transform = Transform2D(0.32, 0, 0, 0.32, 383.545, 450)
+transform = Transform2D(0.32, 0, 0, 0.32, 50, 470)
 scene_text_file = "res://story_dialogue.json"
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -722,7 +722,7 @@ offset_right = 86.0
 offset_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Items 0/1
+text = "
 "
 
 [node name="message_label" type="Label" parent="HUD"]
@@ -736,7 +736,7 @@ offset_left = 47.0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 51.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "HP"
 script = ExtResource("3_l5tdu")
@@ -746,7 +746,7 @@ offset_left = 42.0
 offset_top = 74.0
 offset_right = 134.0
 offset_bottom = 108.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "Gold"
 script = SubResource("GDScript_634km")

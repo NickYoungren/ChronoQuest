@@ -1,23 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://8iiu88x5qh1"]
 
 [ext_resource type="Script" path="res://dialogbox.gd" id="1_tx7dl"]
-[ext_resource type="Texture2D" uid="uid://y0q3uq73calt" path="res://Assets/pixilart-sprite - Copy.png" id="2_0xj36"]
+[ext_resource type="Texture2D" uid="uid://c76wklvlpvpt7" path="res://purple_box.png" id="2_4w0ec"]
 
 [node name="dialogbox" type="CanvasLayer"]
 script = ExtResource("1_tx7dl")
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = 18.0
-offset_top = -338.0
-offset_right = 1130.0
-offset_bottom = 573.0
-texture = ExtResource("2_0xj36")
+modulate = Color(0.415686, 0.823529, 0.0941176, 1)
+offset_top = 56.0
+offset_right = 1158.0
+offset_bottom = 1027.0
+texture = ExtResource("2_4w0ec")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 154.0
-offset_top = 257.0
-offset_right = 1052.0
-offset_bottom = 458.0
+offset_left = 121.0
+offset_top = 173.0
+offset_right = 1019.0
+offset_bottom = 374.0
 theme_override_font_sizes/font_size = 72
 autowrap_mode = 3
 
