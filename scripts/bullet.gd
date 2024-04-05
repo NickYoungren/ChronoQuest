@@ -11,7 +11,7 @@ func setDir(d):
 func _process(delta):
 	position += transform.x * speed * delta * dir
 	
-#func _on_body_entered(body):
-	#print("Body entered: " + body.name)
-	#print("delete orb")
-	#queue_free()
+func _on_body_entered(body):
+	if body.get_parent().name == "mobs":
+		body.stun()
+	queue_free()

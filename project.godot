@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Godot"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*res://Global/Game.gd"
+Utils="*res://Global/Utils.gd"
+ChangeScene="*res://scenes/change_scene.tscn"
+Signalbus="*res://scripts/signalbus.gd"
 
 [dotnet]
 
@@ -46,6 +53,10 @@ reset_level={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_2="dialog"
 
 [rendering]
 

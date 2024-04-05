@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,11 +10,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_hud_start_game() -> void:
-	$Player.start($SpawnLocation.position)
-
-func _on_player_death() -> void:
-	$HUD.show_game_over()
-
-func _on_player_victory() -> void:
-	$HUD.show_win()
+func _on_area_2d_body_entered():

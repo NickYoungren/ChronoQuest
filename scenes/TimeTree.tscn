@@ -1,0 +1,163 @@
+[gd_scene load_steps=17 format=3 uid="uid://b0wngpyqygjj3"]
+
+[ext_resource type="Texture2D" uid="uid://beqshxddu0w0t" path="res://Assets/bush.png" id="1_ftnoe"]
+[ext_resource type="Script" path="res://scenes/Area2D.gd" id="1_yt6mb"]
+[ext_resource type="Texture2D" uid="uid://bfpawqkhjhl70" path="res://Assets/null.png" id="2_33616"]
+[ext_resource type="Texture2D" uid="uid://iy1e4arrg3e8" path="res://Assets/tree.png" id="4_7cmvn"]
+[ext_resource type="Texture2D" uid="uid://crlw0cq8aajc3" path="res://Assets/Arrow.png" id="5_otcow"]
+[ext_resource type="Texture2D" uid="uid://dthltbh8rcknp" path="res://Assets/Arrow2.png" id="6_rbcpn"]
+[ext_resource type="Texture2D" uid="uid://63puktmu4txs" path="res://Assets/Arrow3.png" id="7_xv2ok"]
+[ext_resource type="Texture2D" uid="uid://coi4cwaqw5kln" path="res://Assets/Arrow4.png" id="8_sk8e8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy1a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ftnoe")
+}],
+"loop": true,
+"name": &"Bush",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33616")
+}],
+"loop": true,
+"name": &"Null",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jey2u"]
+size = Vector2(72, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xooq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33616")
+}],
+"loop": true,
+"name": &"Null",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7cmvn")
+}],
+"loop": true,
+"name": &"Tree",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_traxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33616")
+}],
+"loop": true,
+"name": &"Null",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7cmvn")
+}],
+"loop": true,
+"name": &"Tree2",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krutm"]
+atlas = ExtResource("5_otcow")
+region = Rect2(0, 0, 122, 114)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n6mqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krutm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rbcpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xv2ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sk8e8")
+}],
+"loop": true,
+"name": &"Forward",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33616")
+}],
+"loop": true,
+"name": &"Null",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1brm"]
+size = Vector2(29, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnldp"]
+size = Vector2(58, 43)
+
+[node name="TimeTree" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_yt6mb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(9.53674e-07, -7)
+scale = Vector2(0.521739, 0.5)
+sprite_frames = SubResource("SpriteFrames_cy1a7")
+animation = &"Null"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -37.5)
+shape = SubResource("RectangleShape2D_jey2u")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(0, -18)
+scale = Vector2(0.344771, 0.326577)
+sprite_frames = SubResource("SpriteFrames_6xooq")
+animation = &"Null"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(0, -41)
+scale = Vector2(0.725225, 0.725225)
+sprite_frames = SubResource("SpriteFrames_traxp")
+animation = &"Tree2"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(0, -18)
+scale = Vector2(0.154514, 0.175439)
+sprite_frames = SubResource("SpriteFrames_n6mqw")
+animation = &"Forward"
+autoplay = "Null"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Area2D"]
+sleeping = true
+lock_rotation = true
+freeze = true
+
+[node name="Tree" type="CollisionShape2D" parent="Area2D/RigidBody2D"]
+position = Vector2(1, -22)
+shape = SubResource("RectangleShape2D_i1brm")
+
+[node name="Tree2" type="CollisionShape2D" parent="Area2D/RigidBody2D"]
+position = Vector2(1, -50)
+shape = SubResource("RectangleShape2D_wnldp")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+wait_time = 0.504
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
