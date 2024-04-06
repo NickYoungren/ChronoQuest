@@ -93,7 +93,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor()  && anim.current_animation != "rewind":
 		velocity.y = JUMP_VELOCITY
 		anim.play("Jump")
-
+		$effects/runningFx.emitting = false
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -118,17 +118,19 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		if velocity.y == 0  && anim.current_animation != "rewind":
 			anim.play("Run")
+			$effects/runningFx.emitting = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if velocity.y == 0 && anim.current_animation != "rewind":
 			anim.play("Idle")
+			$effects/runningFx.emitting = false
 	if velocity.y > 0  && anim.current_animation != "rewind":
 		anim.play("Fall")
 	move_and_slide()
 	if Game.playerHP <= 0:
 		queue_free()
 		ChangeScene.change_scene("res://scenes/Game.tscn")
-		
+
 #currently the respawn button is Q
 func handleRespawn():
 	global_position = Vector2(166,379)
