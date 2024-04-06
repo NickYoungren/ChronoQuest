@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=48 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
@@ -404,6 +404,9 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_r8adq"]
+resource_name = "explode"
+
 [sub_resource type="Animation" id="Animation_pf8sa"]
 resource_name = "rewind"
 length = 0.4
@@ -433,9 +436,6 @@ tracks/1/keys = {
 "values": [9, 8, 7, 6, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_r8adq"]
-resource_name = "explode"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vfi7"]
 _data = {
 "Fall": SubResource("Animation_4tj2x"),
@@ -448,6 +448,24 @@ _data = {
 "explode": SubResource("Animation_r8adq"),
 "rewind": SubResource("Animation_pf8sa")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0ve3"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+velocity_pivot = Vector3(0, 51, 0)
+direction = Vector3(1, -1, 0)
+initial_velocity_min = 39.3
+initial_velocity_max = 149.1
+gravity = Vector3(0, 98, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 9.575
+turbulence_noise_speed_random = 0.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-2, -2)
@@ -477,5 +495,13 @@ position = Vector2(22, -8)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="effects" type="Node2D" parent="."]
+
+[node name="runningFx" type="GPUParticles2D" parent="effects"]
+position = Vector2(1, 26)
+process_material = SubResource("ParticleProcessMaterial_u0ve3")
+trail_enabled = true
+trail_lifetime = 0.05
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
