@@ -81,7 +81,6 @@ func _physics_process(delta):
 	if position == rewp:
 		if tween:
 			tween.kill()
-			anim.play("Idle")
 	
 	if Input.is_action_just_pressed('reset_level'):
 		reset_level()
