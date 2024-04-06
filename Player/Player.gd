@@ -43,10 +43,26 @@ func rewind():
 		anim.play("rewind")
 		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.set_loops().set_parallel(false)
-		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.5)
+		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.2)
 		owner.remove_child(b)
 	rew = !rew;
-	
+
+func dash(direction):
+	#NOTES IN DASH
+	#Doesn't handle dashing up and down
+	#Collides on the enemies because of collision masking
+	if (Game.charges == 0):
+		pass
+	else:
+		
+		Game.charges -= 1
+		anim.play("rewind")
+		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		tween.set_loops().set_parallel(false)
+		rewp = Vector2(position.x + (direction * 100), position.y)
+		print(rewp)
+		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.1)
+
 func shoot():
 	#add animation?
 	#anim.play("Shoot")
@@ -66,7 +82,7 @@ func _physics_process(delta):
 		if tween:
 			tween.kill()
 			anim.play("Idle")
-
+	
 	if Input.is_action_just_pressed('reset_level'):
 		reset_level()
 	# Add the gravity.
@@ -84,6 +100,8 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_just_pressed("rewind"):
 		rewind()
+	if Input.is_action_just_pressed('dash'):
+		dash(direction)
 	if Input.is_action_just_pressed("shoot") && sready  && anim.current_animation != "rewind":
 		if !direction && velocity.y == 0:
 			get_node("AnimatedSprite2D").play("Shoot")

@@ -34,6 +34,7 @@ func _on_player_detection_body_entered(body):
 
 func death():
 	Game.Gold += 5
+	Game.charges +=1
 	Utils.saveGame()
 	chase = false
 	get_node("AnimatedSprite2D").play("Death")
