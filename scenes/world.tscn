@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bh75dl0kcwri5"]
+[gd_scene load_steps=31 format=3 uid="uid://bh75dl0kcwri5"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_32wlg"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="1_s32k6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://2ksnb5od8mwe" path="res://Assets/Spike.PNG" id="10_c7bxa"]
 [ext_resource type="Script" path="res://scripts/SpawnLocation.gd" id="11_5md1d"]
 [ext_resource type="PackedScene" uid="uid://npgu6dlck14g" path="res://scenes/soldier.tscn" id="11_opsa0"]
+[ext_resource type="FontFile" uid="uid://bye541blxyg15" path="res://Assets/monogram.ttf" id="11_urodf"]
 [ext_resource type="Texture2D" uid="uid://cchj1unkbglw5" path="res://Assets/Capture.PNG" id="12_oqve5"]
 [ext_resource type="Texture2D" uid="uid://cqavrioyfxuli" path="res://Assets/chargebar/chargebar_47.png" id="12_wxbv3"]
 [ext_resource type="PackedScene" uid="uid://e85of1k3eoym" path="res://scenes/parallax_background.tscn" id="14_8agtr"]
@@ -728,10 +729,10 @@ text = "
 "
 
 [node name="message_label" type="Label" parent="HUD"]
-offset_left = 80.0
-offset_top = 318.0
-offset_right = 289.0
-offset_bottom = 341.0
+offset_left = 174.0
+offset_top = 37.0
+offset_right = 383.0
+offset_bottom = 60.0
 
 [node name="HP" type="Label" parent="HUD"]
 offset_left = 47.0
@@ -739,6 +740,7 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 51.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_urodf")
 theme_override_font_sizes/font_size = 24
 text = "HP"
 script = ExtResource("3_l5tdu")
@@ -749,6 +751,7 @@ offset_top = 74.0
 offset_right = 134.0
 offset_bottom = 108.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_urodf")
 theme_override_font_sizes/font_size = 24
 text = "Gold"
 script = SubResource("GDScript_634km")
