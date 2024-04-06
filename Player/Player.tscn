@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cknaqrmajfvur"]
+[gd_scene load_steps=47 format=3 uid="uid://cknaqrmajfvur"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_76ai2"]
 [ext_resource type="Texture2D" uid="uid://dxsuddqyceph6" path="res://Assets/Sewers pack files/Sewers pack files/Spritesheets/player.png" id="2_is0gj"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bsgshdr63p60w" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/run/run6.png" id="16_jl1on"]
 [ext_resource type="Texture2D" uid="uid://dxicwva4ww0wg" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Player/shoot.png" id="20_6cl0y"]
 [ext_resource type="Texture2D" uid="uid://d0xg0qsvrbx78" path="res://Assets/lightningball.png" id="21_f4bsa"]
+[ext_resource type="Texture2D" uid="uid://cojttq1ky4438" path="res://Assets/explode/01.png" id="22_hb2nl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_va3pr"]
 height = 54.0
@@ -28,6 +29,50 @@ height = 54.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgy7p"]
 atlas = ExtResource("2_is0gj")
 region = Rect2(0, 462, 64, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brbrm"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giqbh"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfr4x"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eqdl"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ryg7"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5knj"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(320, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jbx2"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(384, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5rol"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(448, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo4mj"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(512, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecvr4"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(576, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85qte"]
+atlas = ExtResource("22_hb2nl")
+region = Rect2(640, 384, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pbtd"]
 animations = [{
@@ -117,6 +162,44 @@ animations = [{
 "loop": true,
 "name": &"Shoot",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brbrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giqbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfr4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eqdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ryg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5knj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jbx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5rol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo4mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecvr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85qte")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -323,6 +406,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_pf8sa"]
 resource_name = "rewind"
+length = 0.4
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -330,10 +415,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [&"rewind"]
+"values": [&"explode", &"rewind", &"explode"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -342,11 +427,14 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [9, 8, 7, 6, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+
+[sub_resource type="Animation" id="Animation_r8adq"]
+resource_name = "explode"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vfi7"]
 _data = {
@@ -357,6 +445,7 @@ _data = {
 "RESET": SubResource("Animation_u16yj"),
 "Run": SubResource("Animation_ltbiu"),
 "Shoot": SubResource("Animation_jd6ux"),
+"explode": SubResource("Animation_r8adq"),
 "rewind": SubResource("Animation_pf8sa")
 }
 
