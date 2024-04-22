@@ -147,6 +147,8 @@ func _on_trap_body_entered(body):
 func _on_win_body_entered(body):
 	if body.name == "Player":
 		victory.emit()
+		Game.level += 1
+		print(Game.level)
 		ChangeScene.change_scene("res://scenes/level_complete.tscn")
 
 
