@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8s6jg6f2gr2a"]
+[gd_scene load_steps=23 format=3 uid="uid://b8s6jg6f2gr2a"]
 
 [ext_resource type="Texture2D" uid="uid://707taj15racd" path="res://Assets/Sewers pack files/Tiles/tileset.png" id="1_0fxh7"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="2_myftt"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cchj1unkbglw5" path="res://Assets/Capture.PNG" id="7_ewicv"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="8_bcayw"]
 [ext_resource type="FontFile" uid="uid://bye541blxyg15" path="res://Assets/monogram.ttf" id="9_6ffug"]
-[ext_resource type="Script" path="res://scripts/HP.gd" id="9_q308c"]
 [ext_resource type="Texture2D" uid="uid://cqavrioyfxuli" path="res://Assets/chargebar/chargebar_47.png" id="11_x11wb"]
 [ext_resource type="Texture2D" uid="uid://dfwgrvm7wah3o" path="res://Assets/chargebar/chargebar_54.png" id="12_jb65o"]
 [ext_resource type="PackedScene" uid="uid://lj1vebmrafg6" path="res://scenes/dialogarea.tscn" id="13_6bpj6"]
@@ -1279,22 +1278,11 @@ offset_top = 37.0
 offset_right = 383.0
 offset_bottom = 60.0
 
-[node name="HP" type="Label" parent="HUD"]
-offset_left = 47.0
-offset_top = 28.0
-offset_right = 139.0
-offset_bottom = 51.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_6ffug")
-theme_override_font_sizes/font_size = 24
-text = "HP"
-script = ExtResource("9_q308c")
-
 [node name="Gold" type="Label" parent="HUD"]
-offset_left = 42.0
-offset_top = 74.0
-offset_right = 134.0
-offset_bottom = 108.0
+offset_left = 25.0
+offset_top = 22.0
+offset_right = 117.0
+offset_bottom = 56.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("9_6ffug")
 theme_override_font_sizes/font_size = 24
