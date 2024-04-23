@@ -10,11 +10,11 @@ func _ready():
 func _process(delta):
 	pass
 
-
-
 func _on_next_pressed():
 	print(Game.level)
-	if Game.level == 2:
+	if Game.level == 1:
+		ChangeScene.change_scene("res://scenes/world.tscn")
+	elif Game.level == 2:
 		ChangeScene.change_scene("res://scenes/room.tscn")
 	elif Game.level >= 3:
 		ChangeScene.change_scene("res://scenes/2floor.tscn")

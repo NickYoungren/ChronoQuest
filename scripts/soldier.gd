@@ -53,9 +53,8 @@ func _on_player_death_body_entered(body):
 
 func _on_player_collision_body_entered(body):
 	if body.name == "Player":
-		Game.playerHP -= 3;
+		ChangeScene.change_scene("res://scenes/death_scene.tscn")
 		death()
-
 
 func stun():
 	get_node("AnimatedSprite2D").play("stunned")

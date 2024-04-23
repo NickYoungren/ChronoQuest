@@ -24,6 +24,7 @@ signal death()
 signal victory()
 
 func _ready() -> void:
+	Game.charges = 2
 	message_label = get_node("/root/Level1/HUD/message_label")
 	if message_label:
 		message_label.hide() # Hide the label initially
@@ -165,8 +166,6 @@ func _on_win_body_entered(body):
 		Game.level += 1
 		print(Game.level)
 		ChangeScene.change_scene("res://scenes/level_complete.tscn")
-
-
 
 func _on_timer_timeout():
 	sready = true # Replace with function body.
