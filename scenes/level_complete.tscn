@@ -383,17 +383,17 @@ sources/0 = SubResource("TileSetAtlasSource_cotya")
 script = ExtResource("1_8w6or")
 
 [node name="Next" type="Button" parent="."]
-offset_left = 624.0
-offset_top = 280.0
-offset_right = 725.0
-offset_bottom = 340.0
+offset_left = 408.0
+offset_top = 295.0
+offset_right = 509.0
+offset_bottom = 355.0
 text = "Next Level"
 
 [node name="Back" type="Button" parent="."]
-offset_left = 384.0
-offset_top = 288.0
-offset_right = 480.0
-offset_bottom = 347.0
+offset_left = 668.0
+offset_top = 293.0
+offset_right = 764.0
+offset_bottom = 352.0
 text = "Main Menu"
 
 [node name="LevelComplete" type="Sprite2D" parent="."]

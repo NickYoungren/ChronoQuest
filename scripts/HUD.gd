@@ -20,7 +20,7 @@ func _process(float):
 	if (Game.charges >= 0):
 		#will never be higher than 47 or lower than 42
 		var charges = clamp(Game.charges, 0, 5)
-		#$ChargeBar.texture = textureArray[charges]
+		$ChargeBar.texture = textureArray[charges]
 		
 func _on_player_victory():
 	message_label = get_node("message_label")

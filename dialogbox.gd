@@ -7,8 +7,8 @@ var selected_text = []
 var selected_text_copy = []
 var in_progress = false
 
-var typing_speed = .1
-var read_time = 2
+var typing_speed = 0.05
+var read_time = 1
 
 var current_message = 0
 var display = ""
@@ -33,6 +33,7 @@ func on_display_dialog(text_key):
 	if not in_progress:
 		scene_text = load_scene_text()
 		background.visible = true
+		text_label.visible = true
 		in_progress = true
 		selected_text = scene_text[text_key]
 		selected_text_copy = scene_text[text_key]
@@ -49,7 +50,8 @@ func start_dialogue():
 func stop_dialogue():
 	# get_parent().remove_child(self)
 	in_progress = false
-	queue_free()
+	background.visible = false
+	text_label.visible = false
 
 func _on_next_char_timeout():
 	if (current_char < len(selected_text[current_message])):

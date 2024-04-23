@@ -1,26 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://8iiu88x5qh1"]
 
 [ext_resource type="Script" path="res://dialogbox.gd" id="1_tx7dl"]
-[ext_resource type="Texture2D" uid="uid://c76wklvlpvpt7" path="res://purple_box.png" id="2_4w0ec"]
+[ext_resource type="Texture2D" uid="uid://dfg5shhb0c38r" path="res://Assets/UI_Flat_Banner_01_Downward.png" id="2_6em6i"]
 [ext_resource type="FontFile" uid="uid://bye541blxyg15" path="res://Assets/monogram.ttf" id="3_t3qx1"]
 
 [node name="dialogbox" type="CanvasLayer"]
 script = ExtResource("1_tx7dl")
 
 [node name="background" type="TextureRect" parent="."]
-modulate = Color(0.415686, 0.823529, 0.0941176, 1)
-offset_top = 56.0
-offset_right = 1158.0
-offset_bottom = 1027.0
-texture = ExtResource("2_4w0ec")
+offset_left = 65.0
+offset_top = 70.0
+offset_right = 3312.0
+offset_bottom = 585.0
+texture = ExtResource("2_6em6i")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
-offset_left = 121.0
-offset_top = 173.0
-offset_right = 1019.0
-offset_bottom = 374.0
+offset_left = 638.0
+offset_top = 206.0
+offset_right = 2791.0
+offset_bottom = 438.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_t3qx1")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 100
 autowrap_mode = 3
 
 [node name="next_message" type="Timer" parent="."]
