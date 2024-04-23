@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://scimub2iqxx2"
+path="res://.godot/imported/MAGSpel_Anime Ability Charge 2.wav-6857535eb16afec0c0cfcd5e0502f5f9.sample"
+
+[deps]
+
+source_file="res://Assets/MAGSpel_Anime Ability Charge 2.wav"
+dest_files=["res://.godot/imported/MAGSpel_Anime Ability Charge 2.wav-6857535eb16afec0c0cfcd5e0502f5f9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -10,3 +10,4 @@ func _on_quit_pressed():
 
 func _on_play_pressed():
 	ChangeScene.change_scene("res://scenes/world.tscn")
+	Game.level = 1

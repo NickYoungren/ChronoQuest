@@ -15,19 +15,22 @@ var shooter=false
 var message_label
 @onready var anim = get_node("AnimationPlayer")
 @onready var timer: Timer = $Timer
+@onready var bg_audio:= AudioStreamPlayer.new()
+@onready var player_audio:= AudioStreamPlayer.new()
 @export var orb : PackedScene
 @export var bullet : PackedScene
 var sready = true
 signal death()
 signal victory()
 
-
 func _ready() -> void:
 	message_label = get_node("/root/Level1/HUD/message_label")
 	if message_label:
 		message_label.hide() # Hide the label initially
-
-	
+	bg_audio.stream = load("res://Assets/2- Mental Vortex.mp3")
+	bg_audio.autoplay = true
+	add_child(bg_audio)
+	add_child(player_audio)
 
 func start(pos):
 	position = pos
@@ -106,6 +109,8 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").play("Shoot")
 		#await get_node("AnimatedSprite2D").animation_finished
 		shoot()
+		$PlayerFx.stream = load("res://Assets/ELECSprk_Anime Spark 1.wav")
+		$PlayerFx.play()
 		timer.start()
 		sready = false
 	if direction == -1:
@@ -137,12 +142,22 @@ func handleRespawn():
 	
 func reset_level():
 	queue_free()
-	ChangeScene.change_scene("res://scenes/Game.tscn")
+	if Game.level == 1:
+		ChangeScene.change_scene("res://scenes/world.tscn")
+	elif Game.level == 2:
+		ChangeScene.change_scene("res://scenes/room.tscn")
+	elif Game.level >= 3:
+		ChangeScene.change_scene("res://scenes/2floor.tscn")
 
 func _on_trap_body_entered(body):
 	if body.name == "Player":
-		#death.emit()
-		Game.playerHP -= 3
+		death.emit()
+		anim.play("Hurt")
+		$AnimatedSprite2D.visible = false
+		$effects/explodeFx.emitting = true
+		#this wait is scuffed but whatever
+		await get_tree().create_timer(1).timeout
+		ChangeScene.change_scene("res://scenes/death_scene.tscn")
 
 func _on_win_body_entered(body):
 	if body.name == "Player":

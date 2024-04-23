@@ -14,9 +14,9 @@ func _process(delta):
 
 func _on_next_pressed():
 	print(Game.level)
-	if Game.level == 1:
+	if Game.level == 2:
 		ChangeScene.change_scene("res://scenes/room.tscn")
-	elif Game.level >= 2:
+	elif Game.level >= 3:
 		ChangeScene.change_scene("res://scenes/2floor.tscn")
 
 

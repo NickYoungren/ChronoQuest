@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m0rjiuw0v4vf"
+path="res://.godot/imported/FGHTMisc_Anime Jump 2.wav-3430b875e2567a8e5c93f17602bb4c71.sample"
+
+[deps]
+
+source_file="res://Assets/FGHTMisc_Anime Jump 2.wav"
+dest_files=["res://.godot/imported/FGHTMisc_Anime Jump 2.wav-3430b875e2567a8e5c93f17602bb4c71.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
