@@ -53,7 +53,7 @@ func _on_player_collision_body_entered(body):
 		if body.anim.current_animation == "rewind":
 			death()
 		else:
-			ChangeScene.change_scene("res://scenes/death_scene.tscn")
+			body.handleDeath()
 
 func stun():
 	get_node("AnimatedSprite2D").play("stunned")
