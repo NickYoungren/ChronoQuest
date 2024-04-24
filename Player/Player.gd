@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var rewp = position
+var dashp = position
 var b
 var bul
 var flipped = 1
@@ -19,6 +20,7 @@ var message_label
 @onready var player_audio:= AudioStreamPlayer.new()
 @export var orb : PackedScene
 @export var bullet : PackedScene
+@onready var tweening = false
 var sready = true
 signal death()
 signal victory()
@@ -59,14 +61,12 @@ func dash(direction):
 	if (Game.charges == 0):
 		pass
 	else:
-		
 		Game.charges -= 1
 		anim.play("rewind")
 		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.set_loops().set_parallel(false)
-		rewp = Vector2(position.x + (direction * 100), position.y)
-		print(rewp)
-		tween.tween_property(get_parent().get_node("Player"), "position", rewp, 0.1)
+		dashp = Vector2(position.x + (direction * 100), position.y)
+		tween.tween_property(get_parent().get_node("Player"), "position", dashp, 0.1)
 
 func shoot():
 	#add animation?
@@ -79,12 +79,12 @@ func shoot():
 	else:
 		bul.position = position
 
-
 func _physics_process(delta):
 	orb = load("res://scenes/orb.tscn")
 	bullet = load("res://scenes/bullet.tscn")
-	if position == rewp:
+	if position == rewp || position == dashp:
 		if tween:
+			tweening = false
 			tween.kill()
 	
 	if Input.is_action_just_pressed('reset_level'):
@@ -92,8 +92,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor()  && anim.current_animation != "rewind":
 		velocity.y = JUMP_VELOCITY

@@ -48,8 +48,6 @@ func _on_player_detection_body_exited(body):
 	if body.name == "Player":
 		chase = false
 
-
-
 func _on_player_collision_body_entered(body):
 	if body.name == "Player":
 		if body.anim.current_animation == "rewind":
