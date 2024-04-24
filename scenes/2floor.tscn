@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3kgalrs133bo"]
+[gd_scene load_steps=24 format=3 uid="uid://3kgalrs133bo"]
 
 [ext_resource type="Texture2D" uid="uid://707taj15racd" path="res://Assets/Sewers pack files/Tiles/tileset.png" id="1_cjntr"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="2_vfnh0"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://bye541blxyg15" path="res://Assets/monogram.ttf" id="10_nx4x7"]
 [ext_resource type="Texture2D" uid="uid://cqavrioyfxuli" path="res://Assets/chargebar/chargebar_47.png" id="12_uv732"]
 [ext_resource type="Texture2D" uid="uid://dfwgrvm7wah3o" path="res://Assets/chargebar/chargebar_54.png" id="13_jdqmk"]
+[ext_resource type="PackedScene" uid="uid://npgu6dlck14g" path="res://scenes/soldier.tscn" id="13_xr0j7"]
 
 [sub_resource type="GDScript" id="GDScript_l60uq"]
 script/source = "extends StaticBody2D
@@ -1343,6 +1344,20 @@ texture = ExtResource("12_uv732")
 position = Vector2(1095, 24)
 scale = Vector2(2.4375, 2.84375)
 texture = ExtResource("13_jdqmk")
+
+[node name="mobs" type="Node2D" parent="."]
+
+[node name="Soldier3" parent="mobs" instance=ExtResource("13_xr0j7")]
+position = Vector2(757, 316)
+
+[node name="Soldier" parent="mobs" instance=ExtResource("13_xr0j7")]
+position = Vector2(190, 329)
+
+[node name="Soldier2" parent="mobs" instance=ExtResource("13_xr0j7")]
+position = Vector2(549, 317)
+
+[node name="Soldier4" parent="mobs" instance=ExtResource("13_xr0j7")]
+position = Vector2(989, 438)
 
 [connection signal="body_entered" from="room/sensor" to="room" method="_on_sensor_body_entered"]
 [connection signal="body_entered" from="room/sensor2" to="room" method="_on_sensor_2_body_entered"]

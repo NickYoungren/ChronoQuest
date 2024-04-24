@@ -32,5 +32,16 @@ func _on_audio_stream_player_finished():
 
 
 func _on_prev_pressed():
-	pass
+	if Game.level == 1:
+		ChangeScene.change_scene("res://scenes/world.tscn")
+		Game.level -= 1
+	elif Game.level == 2:
+		ChangeScene.change_scene("res://scenes/world.tscn")
+		Game.level -= 1
+	elif Game.level == 3:
+		ChangeScene.change_scene("res://scenes/room.tscn")
+		Game.level -= 1
+	elif Game.level > 3:
+		ChangeScene.change_scene("res://scenes/2floor.tscn")
+		Game.level -= 1
 
