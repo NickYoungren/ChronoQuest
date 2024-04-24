@@ -9,10 +9,10 @@
 script = ExtResource("1_pjute")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 360.0
-offset_top = 560.0
-offset_right = 479.0
-offset_bottom = 644.0
+offset_left = 333.0
+offset_top = 558.0
+offset_right = 452.0
+offset_bottom = 642.0
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
@@ -26,7 +26,7 @@ text = "Quit"
 
 [node name="Title" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(611, 235)
+position = Vector2(592, 258)
 scale = Vector2(0.94179, 0.945308)
 texture = ExtResource("3_tfvqf")
 
