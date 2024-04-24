@@ -163,17 +163,17 @@ func _on_trap_body_entered(body):
 
 func _on_win_body_entered(body):
 	if body.name == "Player":
-		if Game.level == 1 && Game.Gold >=2:
+		if Game.level == 1 && Game.Gold >=3:
 			victory.emit()
 			Game.level += 1
 			print(Game.level)
 			ChangeScene.change_scene("res://scenes/level_complete.tscn")
-		if Game.level == 2 && Game.Gold >=3:
+		elif Game.level == 2 && Game.Gold >=3:
 			victory.emit()
 			Game.level += 1
 			print(Game.level)
 			ChangeScene.change_scene("res://scenes/level_complete.tscn")
-		if Game.level >= 3 && Game.Gold >=4:
+		elif Game.level >= 3 && Game.Gold >=4:
 			victory.emit()
 			Game.level += 1
 			print(Game.level)

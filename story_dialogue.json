@@ -1,22 +1,60 @@
 {
 	"instruction1": [
-		"use arrow keys to move around",
-		"use spacebar to jump"
+		"Use arrow keys to move around the level",
+		"Hit spacebar to jump over gaps and obstacles",
+		"Collect all coins, then find the flag to win!",
+		"press 'q' to reset the level",
+		"Need a redo? Press 'q' to reset your level"
 	],
 	"instruction2": [
-		"use 's' to shoot, this stuns the enemy",
-		"dash through them by pressing 'z' to kill them",
-		"dashing through enemies will use up charges on your charge-bar on the top right, kill more enemies to regain charges"
+		"Hit 's' to shoot and stun your enemies",
+		"Dash through foes with 'z', keep moving!",
+		"Remember, dashing requires forward momentum",
+		"Note: You have a limited number of dashes",
+		"Dash meter is in the top right. Track it!",
+		"Defeat enemies to refill your dash meter!"
 	],
 	"instruction3": [
-		"place a rewind marker by pressing 'r', and when you rewind, you will dash through everything between your position and your rewind point, killing all enemies in your way!",
-		"you have as many rewinds as you like, make sure to use them to navigate"
+		"Set a rewind point anywhere with 'r'",
+		"Press 'r' again to zip back to your mark!", 
+		"Rewinding? It'll wipe out enemies in path",
+		"You've got unlimited rewinds. Use them!",
+		"Rewinds can be key to solving puzzles.",
+		"Need a redo? Press 'q' to reset your level"
 	],
 	"instruction4": [
-		"collect all of the coins to unlock the level flag, press 'q' to reset the level",
-		"there are also special trees that you can use your time travel skills to grow if you need verticality, just hit the up arrow to grow them!"
+		"Look out for special time-altering trees!",
+		"Stay back, then activate the tree safely",
+		"Press the up arrow to make trees grow!",
+		"Want it smaller? Hit the down arrow",
 	],
 	"level2_hint": [
-		"use your time travel powers wisely!"
+		"Don't forget! Dashing in air is possible...",
+		"Before danger, always set a teleport point...",
+		"...just in case! It could save your life."
+	],
+	"level2_hint2": [
+		"Always remember to set teleport points!",
+		"You never know when you may get stuck..."
+		
+	],
+	"level3_hint1": [
+		"Not all coins are good coins...",
+		
+	],
+	"level3_hint2": [
+		"The coin had a button on it...",
+		"After pushing it says: DOOR PERMANENTLY LOCKED!",
+		"If the door won't budge, maybe try dashing?"
+		
+	],
+	"level3_hint3": [
+		"The coin had a button on it...",
+		"After pushing it says: DOOR OPENED!"
+		
+	],
+	"blank": [
+		" ",
+		
 	]
 }

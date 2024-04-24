@@ -7,8 +7,8 @@ var selected_text = []
 var selected_text_copy = []
 var in_progress = false
 
-var typing_speed = 0.05
-var read_time = 1
+var typing_speed = 0.04
+var read_time = 1.5
 
 var current_message = 0
 var display = ""
