@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_pjute"]
 [ext_resource type="PackedScene" uid="uid://e85of1k3eoym" path="res://scenes/parallax_background.tscn" id="2_4ybrk"]
-[ext_resource type="Texture2D" uid="uid://beqvom8nv33oa" path="res://Assets/you-win-4-24-2024.png" id="3_tfvqf"]
+[ext_resource type="Texture2D" uid="uid://bwt12upa6hre4" path="res://Assets/cooltext456658482276164.png" id="4_fb0dp"]
 [ext_resource type="AudioStream" uid="uid://b6n87aytm5je3" path="res://Assets/Sewers pack files/Sewers pack files/Sounds/misc-cinematic-buildup.wav" id="4_w8eu3"]
 
 [node name="Main" type="Node2D"]
@@ -24,16 +24,15 @@ text = "Quit"
 
 [node name="bg" parent="." instance=ExtResource("2_4ybrk")]
 
-[node name="Title" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(592, 258)
-scale = Vector2(0.94179, 0.945308)
-texture = ExtResource("3_tfvqf")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_w8eu3")
 autoplay = true
+
+[node name="Cooltext456658482276164" type="Sprite2D" parent="."]
+position = Vector2(582, 322)
+scale = Vector2(1.57018, 1.57018)
+texture = ExtResource("4_fb0dp")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
