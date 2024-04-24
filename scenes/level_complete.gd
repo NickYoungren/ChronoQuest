@@ -22,3 +22,15 @@ func _on_next_pressed():
 
 func _on_back_pressed():
 	ChangeScene.change_scene("res://scenes/Game.tscn")
+
+
+
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
+
+
+func _on_prev_pressed():
+	pass
+
