@@ -151,6 +151,10 @@ shape = SubResource("RectangleShape2D_vl0hj")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-12, -1)
+target_position = Vector2(0, 43)
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]

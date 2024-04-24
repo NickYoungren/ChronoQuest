@@ -4,17 +4,16 @@
 		"use spacebar to jump"
 	],
 	"instruction2": [
-		"enemies can hurt you! fight back by using 's' to shoot, this will stun the enemy!",
-		"even though the enemies are stunned, they're still alive, dash through them by pressing 'z' to kill them",
+		"use 's' to shoot, this stuns the enemy",
+		"dash through them by pressing 'z' to kill them",
 		"dashing through enemies will use up charges on your charge-bar on the top right, kill more enemies to regain charges"
 	],
 	"instruction3": [
-		"your time travel powers allow you to rewind your own position in space",
 		"place a rewind marker by pressing 'r', and when you rewind, you will dash through everything between your position and your rewind point, killing all enemies in your way!",
 		"you have as many rewinds as you like, make sure to use them to navigate"
 	],
 	"instruction4": [
-		"collect all of the coins to unlock the level flag, and if you get stuck, press 'q' to reset the level",
+		"collect all of the coins to unlock the level flag, press 'q' to reset the level",
 		"there are also special trees that you can use your time travel skills to grow if you need verticality, just hit the up arrow to grow them!"
 	],
 	"level2_hint": [
