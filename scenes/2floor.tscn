@@ -1305,6 +1305,7 @@ position = Vector2(930, 268)
 position = Vector2(1039, 112)
 
 [node name="Coin2" parent="." instance=ExtResource("6_44j2w")]
+modulate = Color(1, 0.211765, 0.596078, 1)
 position = Vector2(625, 335)
 
 [node name="HUD" type="CanvasLayer" parent="."]
