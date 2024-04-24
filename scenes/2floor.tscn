@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3kgalrs133bo"]
+[gd_scene load_steps=24 format=3 uid="uid://c4n7kbul5txff"]
 
 [ext_resource type="Texture2D" uid="uid://707taj15racd" path="res://Assets/Sewers pack files/Tiles/tileset.png" id="1_cjntr"]
 [ext_resource type="PackedScene" uid="uid://cknaqrmajfvur" path="res://Player/Player.tscn" id="2_vfnh0"]
@@ -30,15 +30,17 @@ func _process(delta):
 var loss = false
 
 func _on_sensor_body_entered(body):
-	if(!loss):
-		var door = get_node(\"door\")
-		var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		tween.set_loops().set_parallel(false)
-		tween.tween_property(door, \"position\", Vector2(0, 0), 0.3) # Replace with function body.
+	if body.name == \"Player\":
+		if(!loss):
+			var door = get_node(\"door\")
+			var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+			tween.set_loops().set_parallel(false)
+			tween.tween_property(door, \"position\", Vector2(0, 0), 0.3) # Replace with function body.
 
 
 func _on_sensor_2_body_entered(body):
-	loss = true
+	if body.name == \"Player\":
+		loss = true
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abr2t"]
