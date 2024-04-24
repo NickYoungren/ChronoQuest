@@ -14,7 +14,7 @@ enum SaplingStates {
 @onready var arrow = get_node("AnimatedSprite2D4")
 @onready var treecol = get_node("RigidBody2D/Tree")
 @onready var treecol2 = get_node("RigidBody2D/Tree2")
-
+@onready var audio:= AudioStreamPlayer.new()
 @onready var grow = true
 
 @onready var treepos = treecol.position
@@ -23,10 +23,12 @@ enum SaplingStates {
 func _ready():
 	# Start in the idle state
 	change_state(SaplingStates.bush)
-
+	audio.stream = load("res://Assets/mixkit-fast-small-sweep-transition-166.wav")
+	add_child(audio)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_down") && grow:
+		audio.play()
 		arrow.flip_h = false
 		arrow.play("Forward")
 		timer.start()
@@ -36,6 +38,7 @@ func _input(event):
 			change_state(SaplingStates.bush)
 	# Detect specific button press while the sapling is focused or interacted with
 	if Input.is_action_just_pressed("ui_up")  && grow:
+		audio.play()
 		arrow.flip_h = true
 		arrow.play("Forward")
 		timer.start()
