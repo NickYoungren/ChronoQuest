@@ -33,7 +33,7 @@ func _ready() -> void:
 	message_label = get_node("/root/Level1/HUD/message_label")
 	if message_label:
 		message_label.hide() # Hide the label initially
-	bg_audio.stream = load("res://Assets/2- Mental Vortex.mp3")
+	bg_audio.stream = load("res://Assets/Terrorizer.wav")
 	bg_audio.autoplay = true
 	add_child(bg_audio)
 	add_child(player_audio)
