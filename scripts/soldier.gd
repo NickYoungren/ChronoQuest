@@ -6,6 +6,7 @@ var player
 var chase = false
 var stunned = false
 @onready var timer: Timer = $Timer
+const FLOOR_NORMAL:Vector2 = Vector2.UP
 
 func _ready():
 	get_node("AnimatedSprite2D").play("Walk")
@@ -27,11 +28,14 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").play("Idle")
 		velocity.x = 0	
 	move_and_slide()
+	if is_on_floor() and !$RayCast2D.is_colliding():
+		chase = false
+		$RayCast2D.position.x *= -1.0
+		
 func _on_player_detection_body_entered(body):
 	if body.name == "Player" && !stunned:
 		chase = true
 		
-
 func death():
 	Game.Gold += 5
 	Game.charges +=1
