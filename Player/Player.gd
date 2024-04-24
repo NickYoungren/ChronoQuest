@@ -173,7 +173,7 @@ func _on_win_body_entered(body):
 			Game.level += 1
 			print(Game.level)
 			ChangeScene.change_scene("res://scenes/level_complete.tscn")
-		if Game.level == 3 && Game.Gold >=4:
+		if Game.level >= 3 && Game.Gold >=4:
 			victory.emit()
 			Game.level += 1
 			print(Game.level)
