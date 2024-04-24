@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var rew = false
 var shooter=false
 var message_label
+var isdead
 @onready var anim = get_node("AnimationPlayer")
 @onready var timer: Timer = $Timer
 @onready var bg_audio:= AudioStreamPlayer.new()
@@ -28,6 +29,7 @@ signal victory()
 func _ready() -> void:
 	Game.charges = 2
 	Game.Gold = 0
+	isdead = false
 	message_label = get_node("/root/Level1/HUD/message_label")
 	if message_label:
 		message_label.hide() # Hide the label initially
@@ -132,7 +134,8 @@ func _physics_process(delta):
 			$effects/runningFx.emitting = false
 	if velocity.y > 0  && anim.current_animation != "rewind":
 		anim.play("Fall")
-	move_and_slide()
+	if !isdead:
+		move_and_slide()
 	if Game.playerHP <= 0:
 		queue_free()
 		ChangeScene.change_scene("res://scenes/Game.tscn")
@@ -152,6 +155,7 @@ func reset_level():
 
 func _on_trap_body_entered(body):
 	if body.name == "Player":
+		isdead = true
 		death.emit()
 		anim.play("Hurt")
 		$AnimatedSprite2D.visible = false
@@ -177,6 +181,16 @@ func _on_win_body_entered(body):
 			Game.level += 1
 			print(Game.level)
 			ChangeScene.change_scene("res://scenes/level_complete.tscn")
+
+func handleDeath():
+	isdead = true
+	death.emit()
+	anim.play("Hurt")
+	$AnimatedSprite2D.visible = false
+	$effects/explodeFx.emitting = true
+	#this wait is scuffed but whatever
+	await get_tree().create_timer(1).timeout
+	ChangeScene.change_scene("res://scenes/death_scene.tscn")
 
 func _on_timer_timeout():
 	sready = true # Replace with function body.
