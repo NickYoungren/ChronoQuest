@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://02d6w4fnsv1w" path="res://Assets/Sewers pack files/Sewers pack files/Sprites/Soldier/hurt3.png" id="12_uxieb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kpj3"]
-size = Vector2(33, 51)
+size = Vector2(20, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqq6e"]
 atlas = ExtResource("3_j8auc")
@@ -111,20 +111,20 @@ animations = [{
 radius = 440.028
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl0hj"]
-size = Vector2(14.3556, 47.8898)
+size = Vector2(10.9778, 42.8489)
 
 [node name="Soldier" type="CharacterBody2D"]
 script = ExtResource("1_kp8tr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2.5, 0.5)
+position = Vector2(1, 3.5)
 shape = SubResource("RectangleShape2D_3kpj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_o7pus")
 animation = &"Walk"
+metadata/_edit_lock_ = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 visible = false
@@ -135,7 +135,7 @@ shape = SubResource("CircleShape2D_tec65")
 [node name="PlayerCollision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
-position = Vector2(1, -2.50004)
+position = Vector2(1, 2.5)
 scale = Vector2(2.36841, 1.19023)
 shape = SubResource("RectangleShape2D_vl0hj")
 
