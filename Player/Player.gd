@@ -25,6 +25,7 @@ signal victory()
 
 func _ready() -> void:
 	Game.charges = 2
+	Game.Gold = 0
 	message_label = get_node("/root/Level1/HUD/message_label")
 	if message_label:
 		message_label.hide() # Hide the label initially
@@ -162,10 +163,21 @@ func _on_trap_body_entered(body):
 
 func _on_win_body_entered(body):
 	if body.name == "Player":
-		victory.emit()
-		Game.level += 1
-		print(Game.level)
-		ChangeScene.change_scene("res://scenes/level_complete.tscn")
+		if Game.level == 1 && Game.Gold >=2:
+			victory.emit()
+			Game.level += 1
+			print(Game.level)
+			ChangeScene.change_scene("res://scenes/level_complete.tscn")
+		if Game.level == 2 && Game.Gold >=3:
+			victory.emit()
+			Game.level += 1
+			print(Game.level)
+			ChangeScene.change_scene("res://scenes/level_complete.tscn")
+		if Game.level == 3 && Game.Gold >=4:
+			victory.emit()
+			Game.level += 1
+			print(Game.level)
+			ChangeScene.change_scene("res://scenes/level_complete.tscn")
 
 func _on_timer_timeout():
 	sready = true # Replace with function body.

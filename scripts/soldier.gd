@@ -37,7 +37,6 @@ func _on_player_detection_body_entered(body):
 		chase = true
 		
 func death():
-	Game.Gold += 5
 	Game.charges +=1
 	Utils.saveGame()
 	chase = false
