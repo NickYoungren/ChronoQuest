@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl3lwidx5qvc0"
+path="res://.godot/imported/Roll Credits.wav-8d97cefb8ac806b23bd0689ec25c8312.sample"
+
+[deps]
+
+source_file="res://Assets/Roll Credits.wav"
+dest_files=["res://.godot/imported/Roll Credits.wav-8d97cefb8ac806b23bd0689ec25c8312.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_pjute"]
 [ext_resource type="PackedScene" uid="uid://e85of1k3eoym" path="res://scenes/parallax_background.tscn" id="2_4ybrk"]
-[ext_resource type="AudioStream" uid="uid://vpivfedw5283" path="res://Assets/Terrorizer.wav" id="3_8ojcj"]
+[ext_resource type="AudioStream" uid="uid://bl3lwidx5qvc0" path="res://Assets/Roll Credits.wav" id="3_nny62"]
 [ext_resource type="Texture2D" uid="uid://bwt12upa6hre4" path="res://Assets/cooltext456658482276164.png" id="4_fb0dp"]
 
 [node name="Main" type="Node2D"]
@@ -26,7 +26,7 @@ text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("3_8ojcj")
+stream = ExtResource("3_nny62")
 autoplay = true
 
 [node name="Cooltext456658482276164" type="Sprite2D" parent="."]
