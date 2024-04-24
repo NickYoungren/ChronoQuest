@@ -46,15 +46,13 @@ func _on_player_detection_body_exited(body):
 		chase = false
 
 
-func _on_player_death_body_entered(body):
-	if body.name == "Player":
-		death()
-
 
 func _on_player_collision_body_entered(body):
 	if body.name == "Player":
-		ChangeScene.change_scene("res://scenes/death_scene.tscn")
-		death()
+		if body.anim.current_animation == "rewind":
+			death()
+		else:
+			ChangeScene.change_scene("res://scenes/death_scene.tscn")
 
 func stun():
 	get_node("AnimatedSprite2D").play("stunned")
