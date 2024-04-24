@@ -177,6 +177,11 @@ func _on_win_body_entered(body):
 			Game.level += 1
 			print(Game.level)
 			ChangeScene.change_scene("res://scenes/level_complete.tscn")
+		elif Game.level >= 4 && Game.Gold >=1:
+			victory.emit()
+			Game.level += 1
+			print(Game.level)
+			ChangeScene.change_scene("res://scenes/level_complete.tscn")
 
 func _on_timer_timeout():
 	sready = true # Replace with function body.

@@ -16,8 +16,10 @@ func _on_next_pressed():
 		ChangeScene.change_scene("res://scenes/world.tscn")
 	elif Game.level == 2:
 		ChangeScene.change_scene("res://scenes/room.tscn")
-	elif Game.level >= 3:
+	elif Game.level == 3:
 		ChangeScene.change_scene("res://scenes/2floor.tscn")
+	elif Game.level >= 4:
+		ChangeScene.change_scene("res://scenes/level4.tscn")
 
 
 func _on_back_pressed():

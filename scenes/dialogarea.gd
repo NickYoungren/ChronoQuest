@@ -6,10 +6,8 @@ var area_active = false
 func _input(event):
 	if area_active:
 		Signalbus.emit_signal("display_dialog", dialog_key)
-		print("emit")
 
 func _on_area_entered(area: Area2D) -> void:
-	print("entered")
 	area_active = true
 
 func _on_area_exited(area: Area2D) -> void:

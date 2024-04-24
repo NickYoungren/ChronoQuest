@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://3kgalrs133bo"]
+[gd_scene load_steps=29 format=3 uid="uid://c4n7kbul5txff"]
 
 [ext_resource type="PackedScene" uid="uid://8iiu88x5qh1" path="res://scenes/dialogbox.tscn" id="1_7rms2"]
 [ext_resource type="Texture2D" uid="uid://707taj15racd" path="res://Assets/Sewers pack files/Tiles/tileset.png" id="1_cjntr"]

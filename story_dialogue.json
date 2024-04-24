@@ -44,7 +44,7 @@
 	],
 	"level3_hint2": [
 		"The coin had a button on it...",
-		"After pushing it says: DOOR PERMANENTLY LOCKED!",
+		"After pushing it says: DOOR LOCKED!",
 		"If the door won't budge, maybe try dashing?"
 		
 	],
@@ -53,8 +53,9 @@
 		"After pushing it says: DOOR OPENED!"
 		
 	],
-	"blank": [
-		" ",
+	"level4_hint1": [
+		"ZOOM ZOOM ZOOM!",
+		"Dont forget about your stun gun..."
 		
 	]
 }
